@@ -212,66 +212,104 @@
         .timeline-bar {
             background: var(--white);
             border-bottom: 1px solid var(--gray-1);
-            padding: 28px 40px;
+            padding: 28px 0 36px;
         }
 
-        .tl-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8a9baa; margin-bottom: 20px; }
+        .tl-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8a9baa; margin-bottom: 8px; }
 
-        .tl-track {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            position: relative;
+        /* =============================================
+           GANTT TIMELINE
+        ============================================= */
+        .gantt-wrap { display: flex; flex-direction: column; gap: 0; }
+
+        .gantt-header-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 6px;
+            padding-top: 32px; /* room for Now pill above ticks */
         }
 
-        .tl-track::before {
-            content: '';
-            position: absolute;
-            top: 20px; left: 12.5%; right: 12.5%;
-            height: 3px;
-            background: var(--gray-2);
-            z-index: 0;
-        }
-
-        .tl-phase { text-align: center; position: relative; z-index: 1; }
-
-        .tl-dot {
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            margin: 0 auto 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 15px; font-weight: 700;
-            background: var(--gray-2);
-            border: 3px solid var(--gray-1);
-            color: #8a9baa;
-            position: relative;
-        }
-
-        .tl-phase.done .tl-dot { background: var(--green); border-color: var(--green); color: var(--white); }
-        .tl-phase.here .tl-dot { background: var(--cool-slate); border-color: var(--cool-slate); color: var(--white); box-shadow: 0 0 0 5px rgba(46,68,86,0.15); }
-
-        .tl-name { font-family: 'Roboto Slab', serif; font-size: 13px; font-weight: 600; color: #8a9baa; }
-        .tl-phase.done .tl-name { color: var(--green); }
-        .tl-phase.here .tl-name { color: var(--cool-slate); }
-
-        .tl-desc { font-size: 11px; color: #a0b0be; line-height: 1.5; margin-top: 4px; }
-
-        .tl-here-tag {
-            display: inline-block;
-            font-size: 10px; font-weight: 700; letter-spacing: 1px;
+        .gantt-row-label {
+            width: 155px;
+            min-width: 155px;
+            font-size: 11px;
+            font-weight: 700;
             color: var(--cool-slate);
-            background: var(--gray-2);
-            border-radius: 10px;
-            padding: 2px 8px; margin-top: 6px;
+            text-align: right;
+            padding-right: 18px;
+            line-height: 1.3;
         }
 
-        .tl-phase.done::after {
-            content: '';
+        .gantt-row-label.dim { color: #a0b0be; }
+
+        .gantt-chart-col { flex: 1; position: relative; }
+
+        .gantt-ticks {
+            position: relative;
+            height: 18px;
+        }
+
+        .gantt-tick {
             position: absolute;
-            top: 20px; left: 50%; right: -50%;
-            height: 3px; background: var(--green); z-index: -1;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #b0bfcc;
+            transform: translateX(-50%);
+            white-space: nowrap;
         }
 
-        .tl-phase:last-child::after { display: none; }
+        .gantt-now-indicator {
+            position: absolute;
+            top: -30px;
+            transform: translateX(-50%);
+        }
+
+        .gantt-now-pill {
+            background: var(--cool-slate);
+            color: var(--white);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .gantt-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .gantt-track {
+            flex: 1;
+            position: relative;
+            height: 38px;
+            background: var(--gray-2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .gantt-bar {
+            position: absolute;
+            top: 0; height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .bar-green { background: var(--green); color: var(--white); }
+        .bar-slate { background: linear-gradient(90deg, var(--cool-slate) 50%, rgba(46,68,86,0.12)); color: var(--white); }
+        .bar-teal  { background: linear-gradient(90deg, var(--teal) 50%, rgba(41,164,162,0.12)); color: var(--white); }
+        .bar-gray  { background: var(--gray-1); color: #8a9baa; }
 
         /* =============================================
            MILESTONE FUNNEL
@@ -668,8 +706,10 @@
 
     <!-- Timeline -->
     <div class="timeline-bar">
-        <div class="tl-label" id="tl-label"></div>
-        <div class="tl-track" id="tl-track"></div>
+        <div class="wrap">
+            <div class="tl-label" id="tl-label"></div>
+            <div class="gantt-wrap" id="tl-track"></div>
+        </div>
     </div>
 
     <!-- Program at a Glance -->
@@ -1325,26 +1365,87 @@ function renderHeader() {
         `${D.program.reportMonth}  ·  Program Month ${D.program.programMonth}  ·  Data as of ${D.program.dataAsOf}`;
     document.getElementById('prog-month-pill').textContent = D.program.programMonth;
     document.getElementById('tl-label').textContent =
-        `Client Value Journey — Where We Are Today  ·  Program Month ${D.program.programMonth}`;
+        `Client Value Journey  ·  Program Month ${D.program.programMonth}  ·  These phases run in parallel — outreach, milestone work, and barrier resolution happen simultaneously`;
 }
 
 
 function renderTimeline() {
-    const phases = [
-        { name: "Launch & Readiness",    desc: "Implementation · Go-Live · Push Box Shipment",         state: "done" },
-        { name: "Outreach & Opt-In",      desc: "Member outreach · Opt-in · Care barrier assessments",  state: "here" },
-        { name: "Milestone Engagement",   desc: "AWV · Preventive Screenings · Flu Vaccine",            state: "" },
-        { name: "Outcomes & Value",       desc: "CAHPS/HOS movement · Quality impact · Renewal",       state: "" }
+    const TOTAL = 9; // 9-month program (Apr 13 – Dec 31, 2026)
+
+    // Parse current month from "1 of 9"
+    const curMonth = parseInt(D.program.programMonth.split(' ')[0], 10);
+    // "Now" sits ~half a month into curMonth
+    const nowPct = Math.min(((curMonth - 0.5) / TOTAL) * 100, 96).toFixed(1);
+
+    // Month-axis tick marks: [label, pct]
+    const ticks = [
+        ['Month 1', 0],
+        ['Month 3', ((3 - 1) / (TOTAL - 1) * 100)],
+        ['Month 6', ((6 - 1) / (TOTAL - 1) * 100)],
+        ['Month 9', 100]
     ];
 
-    document.getElementById('tl-track').innerHTML = phases.map(p => `
-        <div class="tl-phase ${p.state}">
-            <div class="tl-dot">${p.state === 'done' ? '✓' : p.state === 'here' ? '▶' : ''}</div>
-            <div class="tl-name">${p.name}</div>
-            <div class="tl-desc">${p.desc}</div>
-            ${p.state === 'here' ? '<div class="tl-here-tag">Now · Month 1</div>' : ''}
+    // Gantt rows — left/width in % of the 9-month span
+    // left  = (startMonth - 1) / (TOTAL - 1) * 100
+    // width = (endMonth - startMonth) / (TOTAL - 1) * 100
+    const rows = [
+        {
+            label:  'Launch & Push',
+            left:   0,
+            width:  ((1.3 - 1) / (TOTAL - 1) * 100).toFixed(1),  // ~Month 1, done
+            color:  'bar-green',
+            text:   'Complete ✓'
+        },
+        {
+            label:  'Outreach & Opt-In',
+            left:   0,
+            width:  100,
+            color:  'bar-slate',
+            text:   'Ongoing ▶'
+        },
+        {
+            label:  'Milestone Engagement',
+            left:   ((2 - 1) / (TOTAL - 1) * 100).toFixed(1),
+            width:  ((9 - 2) / (TOTAL - 1) * 100).toFixed(1),
+            color:  'bar-teal',
+            text:   'Building →'
+        },
+        {
+            label:  'CAHPS & Outcomes',
+            left:   ((6 - 1) / (TOTAL - 1) * 100).toFixed(1),
+            width:  ((9 - 6) / (TOTAL - 1) * 100).toFixed(1),
+            color:  'bar-gray',
+            text:   'Months 6–9'
+        }
+    ];
+
+    // Build tick HTML
+    const tickHTML = ticks.map(([label, pct]) =>
+        `<span class="gantt-tick" style="left:${pct}%">${label}</span>`
+    ).join('');
+
+    // Build rows HTML
+    const rowsHTML = rows.map(r => `
+        <div class="gantt-row">
+            <div class="gantt-row-label${r.color === 'bar-gray' ? ' dim' : ''}">${r.label}</div>
+            <div class="gantt-track">
+                <div class="gantt-bar ${r.color}" style="left:${r.left}%;width:${r.width}%">${r.text}</div>
+            </div>
         </div>
     `).join('');
+
+    document.getElementById('tl-track').innerHTML = `
+        <div class="gantt-header-row">
+            <div class="gantt-row-label"></div>
+            <div class="gantt-chart-col">
+                <div class="gantt-now-indicator" style="left:${nowPct}%">
+                    <div class="gantt-now-pill">Now</div>
+                </div>
+                <div class="gantt-ticks">${tickHTML}</div>
+            </div>
+        </div>
+        ${rowsHTML}
+    `;
 }
 
 
