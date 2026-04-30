@@ -867,12 +867,12 @@ const D = {
 
     metrics: {
         pushBoxesShipped:          null,   // pull from Tableau
-        membersOptedIn:            null,   // pull from Tableau
+        membersOptedIn:            527,
         careBarrierAssessments:    null,   // pull from Tableau
         awvAttestations:           null,   // pull from Tableau
         preventiveAttestations:    null,   // pull from Tableau
         fluVaccineAttestations:    null,   // pull from Tableau
-        optInRate:                 null,   // pull from Tableau
+        optInRate:                 0.0753, // 527 / 7,000 eligible
         sdohNeedPct:               null,   // pull from Tableau
         avgSocialNeeds:            null,   // pull from Tableau
         phq4Avg:                   null,   // pull from Tableau
@@ -1086,9 +1086,9 @@ const D = {
         },
         {
             phase: "Opt-In & Engagement",
-            status: "future",
+            status: "current",
             wellcareWondering: "Are disengaged members responding — and what barriers are standing between them and care?",
-            answer: "Opt-in and care barrier assessment data will populate here once the first full month of outreach is complete. Target: 30% engagement/utilization (2,100 of 7,000). Early PRAPARE + PHQ-4 + UCLA-3 screening data will reveal the specific transportation, access, and social needs barriers that have kept this population disengaged — and allow Pyx to triage each member toward the right support pathway."
+            answer: "527 members have opted in as of April 30 — 7.5% of the 7,000 eligible population, with only ~2.5 weeks of outreach since go-live. This is an early read on a historically disengaged population and will build as outreach cadence continues. Full care barrier assessment data (PRAPARE + PHQ-4 + UCLA-3) will populate in the May report once the first complete outreach cycle is logged. Target remains 30% engagement/utilization (2,100 members) over the program term."
         },
         {
             phase: "Milestone Completion",
