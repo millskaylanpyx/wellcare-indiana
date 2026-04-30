@@ -667,7 +667,7 @@
 
     <!-- Timeline -->
     <div class="timeline-bar">
-        <div class="tl-label">Program Phases — 9-Month Program Arc</div>
+        <div class="tl-label" id="tl-label"></div>
         <div class="tl-track" id="tl-track"></div>
     </div>
 
@@ -683,39 +683,71 @@
         </div></div>
     </div>
 
-    <!-- What Wellcare Is Wondering -->
-    <div class="alt-bg">
-        <div class="wrap"><div class="section">
-            <div class="section-head">
-                <span class="section-eyebrow eyebrow-2">Program Narrative</span>
-                <div class="section-title">What the Data Tells Us</div>
-                <div class="section-sub">Contextualizing early activity against Wellcare's stated goals and the program's 9-month performance arc.</div>
-            </div>
-            <div id="narrative-blocks"></div>
-        </div></div>
-    </div>
+    <!-- =============================================
+         CLIENT VALUE JOURNEY
+    ============================================= -->
 
-    <!-- Milestone Funnel -->
+    <!-- Phase 1: Launch & Push -->
     <div class="white-bg">
         <div class="wrap"><div class="section">
             <div class="section-head">
+                <span class="section-eyebrow eyebrow-1">Phase 1 · Complete ✓</span>
+                <div class="section-title">Launch &amp; Push</div>
+                <div class="section-sub">March 13 – April 20, 2026 · Implementation complete. Push boxes shipped to 6,711 members across two waves — creating the first physical touchpoint with a historically disengaged population and meeting Wellcare's mandate for a fast April launch.</div>
+            </div>
+            <div class="client-q-box" id="journey-q-1" style="margin-bottom:28px;"></div>
+            <div class="kpi-grid" id="journey-cards-1"></div>
+        </div></div>
+    </div>
+
+    <!-- Phase 2: Outreach & Opt-In -->
+    <div class="alt-bg">
+        <div class="wrap"><div class="section">
+            <div class="section-head">
+                <span class="section-eyebrow eyebrow-2">Phase 2 · Active Now · Month 2 ▶</span>
+                <div class="section-title">Outreach &amp; Opt-In</div>
+                <div class="section-sub">April 2026 — Ongoing · Outreach is live across phone, SMS, and email. First opt-ins are coming in. Care barrier assessments (PRAPARE, PHQ-4, UCLA-3) activate with each opt-in to surface what's standing between these members and care.</div>
+            </div>
+            <div class="client-q-box" id="journey-q-2" style="margin-bottom:28px;"></div>
+            <div class="kpi-grid" id="journey-cards-2" style="margin-bottom:40px;"></div>
+            <div class="section-head" style="margin-bottom:20px;">
+                <span class="section-eyebrow eyebrow-3">Screenings &amp; Assessments</span>
+                <div class="section-title" style="font-size:20px;">Care Barrier &amp; Social Needs Data</div>
+                <div class="section-sub">PRAPARE, PHQ-4, and UCLA-3 administered at opt-in — surfacing barriers before they prevent care completion.</div>
+            </div>
+            <div class="screening-grid" id="screening-grid"></div>
+        </div></div>
+    </div>
+
+    <!-- Phase 3: Milestone Engagement -->
+    <div class="white-bg">
+        <div class="wrap"><div class="section">
+            <div class="section-head">
+                <span class="section-eyebrow eyebrow-3">Phase 3 · Months 3–6</span>
+                <div class="section-title">Milestone Engagement</div>
+                <div class="section-sub">Summer 2026 · Opted-in members move through the milestone sequence — AWV scheduling, preventive screenings, and flu vaccine attestation. Each milestone triggers a produce box reward that reinforces behavior and keeps members engaged.</div>
+            </div>
+            <div class="client-q-box future" id="journey-q-3" style="margin-bottom:28px;"></div>
+            <div class="kpi-grid" id="journey-cards-3" style="margin-bottom:40px;"></div>
+            <div class="section-head" style="margin-bottom:20px;">
                 <span class="section-eyebrow eyebrow-3">Milestone Tracking</span>
-                <div class="section-title">Box Milestone Progress</div>
-                <div class="section-sub">Each member can receive up to 5 produce boxes — one at program launch and one upon completion of each preventive care milestone. This is the core incentive engine re-engaging disengaged members and driving CAHPS/HOS and quality movement.</div>
+                <div class="section-title" style="font-size:20px;">Box Milestone Progress</div>
+                <div class="section-sub">Up to 5 produce boxes per member — the core incentive engine driving AWV completion, preventive care, and CAHPS/HOS movement.</div>
             </div>
             <div class="milestone-funnel" id="milestone-funnel"></div>
         </div></div>
     </div>
 
-    <!-- Screenings -->
-    <div class="alt-bg">
-        <div class="wrap"><div class="section">
-            <div class="section-head">
-                <span class="section-eyebrow eyebrow-3">Screenings &amp; Assessments</span>
-                <div class="section-title">Care Barrier &amp; Social Needs Data</div>
-                <div class="section-sub">Pyx collects PRAPARE, PHQ-4, and UCLA-3 assessments at opt-in to identify barriers to care and prioritize member support pathways.</div>
-            </div>
-            <div class="screening-grid" id="screening-grid"></div>
+    <!-- Phase 4: Outcomes & Value -->
+    <div class="value-section">
+        <div class="wrap"><div class="section" style="padding:0;">
+            <span class="section-eyebrow" style="background:rgba(255,255,255,0.1);color:var(--gray-1);">Phase 4 · Months 6–9</span>
+            <div class="section-title" style="color:var(--white);margin-top:12px;">Outcomes &amp; Value</div>
+            <div class="section-sub" style="color:var(--gray-1);margin-bottom:28px;">Fall/Winter 2026 · The "so what." Sustained engagement, milestone completions, and resolved care barriers translate into CAHPS/HOS score movement and a measurably smaller disengaged member population.</div>
+            <div class="client-q-box future" id="journey-q-4" style="margin-bottom:32px;background:rgba(255,255,255,0.05);border-left-color:rgba(255,255,255,0.15);"></div>
+            <div class="val-grid" id="val-grid"></div>
+            <div id="val-total-block"></div>
+            <p class="val-note" id="val-note"></p>
         </div></div>
     </div>
 
@@ -729,18 +761,6 @@
             </div>
             <div class="sla-grid" id="sla-grid"></div>
         </div></div>
-    </div>
-
-    <!-- Value Section -->
-    <div class="value-section">
-        <div class="wrap">
-            <span class="section-eyebrow" style="background:rgba(135,208,1,0.15);color:var(--light-green)">Value Framework</span>
-            <div class="section-title">Estimated Member Value Created</div>
-            <div class="section-sub">Conservative estimates of downstream value generated per activated member, grounded in published research. Actualized as attestations accumulate.</div>
-            <div class="val-grid" id="val-grid"></div>
-            <div id="val-total-block"></div>
-            <p class="val-note" id="val-note"></p>
-        </div>
     </div>
 
     <!-- Goals Alignment -->
@@ -1143,6 +1163,59 @@ const D = {
         }
     ],
 
+    journey: [
+        {
+            phase: 1,
+            name: "Launch & Push",
+            timing: "March 13 – April 20, 2026",
+            state: "done",
+            wondering: "Can Pyx execute fast enough to hit our April launch timeline — and will a produce box actually cut through to these disengaged members?",
+            answer: "Yes on both counts. Implementation completed on schedule and push boxes shipped in two waves: Wave 1 (4,141 members, April 13) and Wave 2 (2,570 members, April 20), reaching 6,711 of 7,000 eligible members. All outreach infrastructure — phone, SMS, email, and toll-free CSC line — is live. Weekly reporting cadence is active per the mandated requirement.",
+            stats: [
+                { label: "Push Boxes Shipped",     valKey: "pushBoxesShipped", fallback: "—",       ctx: "Wave 1 (4,141) + Wave 2 (2,570)", color: ""      },
+                { label: "Members Reached",         val: "6,711",               ctx: "95.9% of 7,000 eligible",          color: "green"  },
+                { label: "Shipping Waves",           val: "2 of 2",              ctx: "Both complete ✓",                  color: "teal"   },
+                { label: "Go-Live Status",           val: "On Schedule",         ctx: "April 13 per contract",            color: "blue"   }
+            ]
+        },
+        {
+            phase: 2,
+            name: "Outreach & Opt-In",
+            timing: "April 2026 — Ongoing",
+            state: "here",
+            wondering: "Are historically disengaged members actually responding to outreach — and what care barriers are standing between them and care?",
+            answer: "527 members have opted in as of April 30 — 7.5% of the 7,000 eligible population after just 2.5 weeks of outreach. For a historically disengaged Medicare population, this is early momentum. Care barrier assessment data (PRAPARE, PHQ-4, UCLA-3) will populate in the May report as the first full outreach cycle completes, revealing the specific barriers driving disengagement.",
+            stats: [
+                { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of April 30",            color: "blue"   },
+                { label: "Opt-In Rate",               valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% (2,100)",       color: ""       },
+                { label: "Care Barrier Assessments", valKey: "careBarrierAssessments",  fallback: "Pending", ctx: "Activates with opt-in",     color: "teal"   },
+                { label: "Outreach Channels",         val: "3 Active",                  ctx: "Phone · SMS · Email",                              color: "slate"  }
+            ]
+        },
+        {
+            phase: 3,
+            name: "Milestone Engagement",
+            timing: "Months 3–6 · Summer 2026",
+            state: "",
+            wondering: "Are opted-in members completing AWVs and preventive screenings — and is the produce box incentive actually driving follow-through on care?",
+            answer: "AWV and preventive care attestation tracking activates as engaged members progress through Milestone Boxes 3–5. The AWV is the highest-leverage activity in this program — a single completed visit triggers the full preventive care cascade (screenings, referrals, Hemoglobin A1c, flu vaccine) while simultaneously building the member's relationship with their plan.",
+            stats: [
+                { label: "AWV Attestations",          valKey: "awvAttestations",          fallback: "Pending", ctx: "Milestone Box 3",          color: "purple" },
+                { label: "Preventive Screenings",     valKey: "preventiveAttestations",   fallback: "Pending", ctx: "Milestone Box 4",          color: "orange" },
+                { label: "Flu Vaccine Attestations",  valKey: "fluVaccineAttestations",   fallback: "Pending", ctx: "Milestone Box 5",          color: "teal"   },
+                { label: "Box Pipeline",              valKey: "membersOptedIn",            fallback: "Building", ctx: "Grows with opt-in rate",  color: "slate"  }
+            ]
+        },
+        {
+            phase: 4,
+            name: "Outcomes & Value",
+            timing: "Months 6–9 · Fall/Winter 2026",
+            state: "",
+            wondering: "Is CAHPS/HOS actually moving — and can we demonstrate that we've meaningfully reduced Wellcare Indiana's disengaged member problem?",
+            answer: "CAHPS and HOS are lagging measures — scores reflect the full measurement year. The leading indicators (AWV completions, preventive screenings, barrier resolutions, UCLA-3 loneliness scores) appear first and build the case. Quality impact and value data populate here starting Month 6. A renewal conversation is targeted for mid-year based on the strength of those signals."
+        }
+    ],
+
     nextMeeting: {
         date:          "May 2026",
         cadence:       "Monthly",
@@ -1196,6 +1269,8 @@ function renderHeader() {
     document.getElementById('client-period').textContent =
         `${D.program.reportMonth}  ·  Program Month ${D.program.programMonth}  ·  Data as of ${D.program.dataAsOf}`;
     document.getElementById('prog-month-pill').textContent = D.program.programMonth;
+    document.getElementById('tl-label').textContent =
+        `Client Value Journey — Where We Are Today  ·  Program Month ${D.program.programMonth}`;
 }
 
 
@@ -1278,14 +1353,50 @@ function renderKPIs() {
 }
 
 
-function renderNarrative() {
-    document.getElementById('narrative-blocks').innerHTML = D.narrative.map(n => `
-        <div class="client-q-box ${n.status === 'future' ? 'future' : ''}">
-            <div class="client-q-label">${n.phase} — ${n.status === 'current' ? 'Now' : 'Upcoming'}</div>
-            <div class="client-q-text">"${n.wellcareWondering}"</div>
-            <div class="client-q-answer">${n.answer}</div>
-        </div>
-    `).join('');
+function renderJourney() {
+    D.journey.forEach((phase, i) => {
+        const n = i + 1;
+
+        // Populate callout box
+        const qEl = document.getElementById(`journey-q-${n}`);
+        if (qEl && phase.wondering) {
+            const isCurrent = phase.state === 'here' || phase.state === 'done';
+            const labelText = phase.state === 'done'    ? `Phase ${n} · ${phase.name} · Complete` :
+                              phase.state === 'here'    ? `Phase ${n} · ${phase.name} · Active Now` :
+                                                          `Phase ${n} · ${phase.name} · Upcoming`;
+            qEl.innerHTML = `
+                <div class="client-q-label">${labelText} — What Wellcare ${phase.state === 'done' ? 'was' : 'is'} wondering</div>
+                <div class="client-q-text">"${phase.wondering}"</div>
+                <div class="client-q-answer">${phase.answer}</div>
+            `;
+        }
+
+        // Populate stat cards
+        const cardsEl = document.getElementById(`journey-cards-${n}`);
+        if (cardsEl && phase.stats) {
+            cardsEl.innerHTML = phase.stats.map(s => {
+                let displayVal;
+                if (s.valKey) {
+                    const raw = D.metrics[s.valKey];
+                    if (raw !== null && raw !== undefined) {
+                        displayVal = s.fmt === '%' ? fmt(raw, '%') : raw.toLocaleString();
+                    } else {
+                        displayVal = s.fallback;
+                    }
+                } else {
+                    displayVal = s.val;
+                }
+                const isPending = s.valKey && D.metrics[s.valKey] === null;
+                return `
+                <div class="kpi ${s.color || ''}">
+                    <div class="kpi-lbl">${s.label}</div>
+                    <div class="kpi-val ${isPending ? 'pending' : ''}">${displayVal}</div>
+                    <div class="kpi-ctx">${s.ctx}</div>
+                </div>
+                `;
+            }).join('');
+        }
+    });
 }
 
 
@@ -1579,7 +1690,7 @@ window.addEventListener('DOMContentLoaded', () => {
     renderHeader();
     renderTimeline();
     renderKPIs();
-    renderNarrative();
+    renderJourney();
     renderMilestones();
     renderScreenings();
     renderSLA();
