@@ -393,10 +393,12 @@
 
         .sla-card.exceed  { border-color: var(--green); }
         .sla-card.behind  { border-color: var(--orange); }
+        .sla-card.ramping { border-color: var(--blue); }
 
         .sla-name   { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #8a9baa; margin-bottom: 10px; }
         .sla-actual { font-family: 'Roboto Slab', serif; font-size: 30px; font-weight: 700; color: var(--cool-slate); line-height: 1; }
         .sla-card.exceed  .sla-actual { color: var(--green); }
+        .sla-card.ramping .sla-actual { color: var(--blue); }
         .sla-card.pending .sla-actual { color: #c8d4de; font-size: 20px; padding-top: 6px; }
         .sla-target { font-size: 12px; color: #8a9baa; margin-top: 6px; }
         .sla-desc   { font-size: 11px; color: #a0b0be; margin-top: 6px; line-height: 1.4; }
@@ -407,9 +409,10 @@
             padding: 3px 10px; border-radius: 20px; margin-top: 10px;
         }
 
-        .badge-exceed  { background: rgba(73,166,1,0.1);  color: var(--green); }
-        .badge-pending { background: var(--gray-2);         color: #8a9baa; }
-        .badge-behind  { background: rgba(214,102,26,0.1); color: var(--orange); }
+        .badge-exceed  { background: rgba(73,166,1,0.1);   color: var(--green); }
+        .badge-ramping { background: rgba(0,118,191,0.1);  color: var(--blue); }
+        .badge-pending { background: var(--gray-2);          color: #8a9baa; }
+        .badge-behind  { background: rgba(214,102,26,0.1);  color: var(--orange); }
 
         /* =============================================
            VALUE SECTION
@@ -966,9 +969,9 @@ const D = {
         {
             name: "Opt-In / Engagement Rate",
             target: 0.30,
-            actual: null,   // pull from Tableau
-            status: "pending",
-            desc: "Disengaged members opting into program — target 30% utilization (2,100 of 7,000)"
+            actual: 0.0753, // 527 of 7,000 — 2.5 weeks post go-live
+            status: "ramping",
+            desc: "527 members opted in — 2.5 weeks post go-live on a historically disengaged population. Program runs through December 31."
         },
         {
             name: "Care Barrier Completion",
@@ -1348,12 +1351,15 @@ function renderScreenings() {
 
 function renderSLA() {
     document.getElementById('sla-grid').innerHTML = D.sla.map(s => {
-        const statusClass = s.actual === null ? 'pending' :
-                            (s.target && s.actual >= s.target) ? 'exceed' : 'behind';
-        const badgeClass  = s.actual === null ? 'badge-pending' :
-                            (s.target && s.actual >= s.target) ? 'badge-exceed' : 'badge-behind';
-        const badgeText   = s.actual === null ? 'Pending' :
-                            (s.target && s.actual >= s.target) ? 'On Track' : 'Below Target';
+        const statusClass = s.status === 'ramping'              ? 'ramping'  :
+                            s.actual === null                   ? 'pending'  :
+                            (s.target && s.actual >= s.target)  ? 'exceed'   : 'behind';
+        const badgeClass  = s.status === 'ramping'              ? 'badge-ramping'  :
+                            s.actual === null                   ? 'badge-pending'  :
+                            (s.target && s.actual >= s.target)  ? 'badge-exceed'   : 'badge-behind';
+        const badgeText   = s.status === 'ramping'              ? 'Early Momentum' :
+                            s.actual === null                   ? 'Pending'        :
+                            (s.target && s.actual >= s.target)  ? 'On Track'       : 'Below Target';
 
         const actualDisplay = s.actual !== null ? fmt(s.actual, '%') :
                               s.status === 'active' ? 'In Progress' : '—';
