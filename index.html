@@ -674,7 +674,7 @@
             <div class="section-head">
                 <span class="section-eyebrow eyebrow-1">Program at a Glance</span>
                 <div class="section-title">Early Indicators</div>
-                <div class="section-sub">Key performance indicators for the Wellcare IN CAHPS &amp; Preventive Care Program. Updated monthly from Pyx Tableau reporting.</div>
+                <div class="section-sub">Key performance indicators for the Wellcare IN CAHPS &amp; Preventive Care Program — targeting ~7,000 historically disengaged Medicare members. Updated monthly from Pyx Tableau reporting.</div>
             </div>
             <div class="kpi-grid" id="kpi-grid"></div>
         </div></div>
@@ -698,7 +698,7 @@
             <div class="section-head">
                 <span class="section-eyebrow eyebrow-3">Milestone Tracking</span>
                 <div class="section-title">Box Milestone Progress</div>
-                <div class="section-sub">Each member can receive up to 5 produce boxes — one at program launch and one upon completion of each preventive care milestone. This is the core incentive engine driving CAHPS and quality movement.</div>
+                <div class="section-sub">Each member can receive up to 5 produce boxes — one at program launch and one upon completion of each preventive care milestone. This is the core incentive engine re-engaging disengaged members and driving CAHPS/HOS and quality movement.</div>
             </div>
             <div class="milestone-funnel" id="milestone-funnel"></div>
         </div></div>
@@ -745,7 +745,7 @@
         <div class="wrap">
             <span class="section-eyebrow" style="background:rgba(255,255,255,0.08);color:var(--gray-1)">Goals Alignment</span>
             <div class="section-title">Wellcare's Goals → Pyx Activation</div>
-            <div class="section-sub">How each of Wellcare Indiana's three program goals maps to Pyx Health's direct activity and the metric that will prove impact.</div>
+            <div class="section-sub">How each of Wellcare Indiana's five program goals maps to Pyx Health's direct activity and the metric that will prove impact. Re-engaging disengaged members is Goal #1 — everything else flows from it.</div>
             <div class="goals-grid" id="goals-grid"></div>
         </div>
     </div>
@@ -951,7 +951,7 @@ const D = {
             name: "UCLA-3 (Loneliness)",
             actual: null,   // pull from Tableau
             avgScore: null, // pull from Tableau
-            desc: "3-item loneliness assessment — a key driver of CAHPS member experience scores"
+            desc: "3-item loneliness assessment — a key driver of CAHPS/HOS member experience and health perception scores"
         }
     ],
 
@@ -961,14 +961,14 @@ const D = {
             target: 1.0,
             actual: null,   // pull from Tableau
             status: "active",
-            desc: "All 7,000 eligible members receive initial push box within shipment schedule"
+            desc: "~6,641 eligible members reached across Wave 1 (4,141) and Wave 2 (~2,500)"
         },
         {
-            name: "Opt-In Rate",
+            name: "Opt-In / Engagement Rate",
             target: 0.30,
             actual: null,   // pull from Tableau
             status: "pending",
-            desc: "Eligible members opting into program — target 30% (2,100 members)"
+            desc: "Disengaged members opting into program — target 30% utilization (2,100 of 7,000)"
         },
         {
             name: "Care Barrier Completion",
@@ -990,59 +990,89 @@ const D = {
             actual: null,   // pull from Tableau
             status: "pending",
             desc: "Enrolled members who attest to receipt of annual flu vaccine"
+        },
+        {
+            name: "Weekly Reporting",
+            target: null,
+            actual: null,
+            status: "active",
+            desc: "Mandated: weekly reporting on engagement activity, care barriers identified, and outreach outcomes"
+        },
+        {
+            name: "Monthly Reporting",
+            target: null,
+            actual: null,
+            status: "active",
+            desc: "Mandated: monthly reporting on engagement, barriers, and outcomes against program goals"
         }
     ],
 
     value: [
         {
             icon: "🩺",
-            label: "AWV Completion",
+            label: "AWV + Preventive Care Cascade",
             valuePerMember: 600,
             estimatePct: 0.50,
-            desc: "Members completing Annual Wellness Visit — anchors the preventive care cascade and closes the single highest-impact care gap for Medicare Advantage quality scores",
-            source: "CMS 2024: AWV improves chronic disease detection and reduces preventable hospitalization risk"
+            desc: "Members completing Annual Wellness Visit — directly triggers the preventive care cascade (screenings, referrals, Hemoglobin A1c, flu vaccine) and closes the highest-impact care gap in Medicare Advantage quality scoring",
+            source: "CMS 2024: AWV completion improves chronic disease detection and anchors preventive screening follow-through"
         },
         {
-            icon: "🥦",
-            label: "SDOH Barrier Removed",
+            icon: "🚗",
+            label: "Care Barrier Resolved",
             valuePerMember: 1200,
             estimatePct: 0.40,
-            desc: "Members receiving targeted resources for identified social needs — food insecurity, housing instability, transportation barriers — reducing downstream utilization",
-            source: "Health Affairs Garg et al. 2019: SDOH screening and navigation reduces ED visits and inpatient costs"
+            desc: "Members receiving targeted support for identified care barriers — transportation, access, social needs, and provider trust — converting disengaged members into active health plan participants",
+            source: "Health Affairs Garg et al. 2019: SDOH screening and navigation reduces ED visits and downstream inpatient costs"
         },
         {
             icon: "⭐",
-            label: "CAHPS Score Movement",
+            label: "CAHPS/HOS Score Movement",
             valuePerMember: null,
             estimatePct: null,
-            desc: "Improvement in Member Experience domain driven by consistent, high-touch engagement — the primary contractual outcome Wellcare purchased",
-            source: "CMS 2026: CAHPS movement directly impacts Star Ratings and Medicare Advantage revenue per member"
+            desc: "Improved member experience and health perception drives CAHPS/HOS score movement — the primary contractual outcome. Re-engaging historically disengaged members is the most direct lever available for perception-based quality measures",
+            source: "CMS 2026: CAHPS/HOS movement directly impacts Star Ratings and Medicare Advantage revenue per member"
         }
     ],
 
     goals: [
         {
             clientGoal: "Goal #1",
-            statement: "Increase member engagement",
-            pyxHow: "Omni-channel outreach with high-touch CSC support and a consistent, welcoming member experience",
-            action: "Push box at go-live drives initial response. Telephone, SMS, and email outreach supports opt-in and builds plan trust.",
-            metric: "Push boxes live · Wave 1: 4,141 · Wave 2: ~2,500 · Total scope: 7,000",
+            statement: "Re-engage ~7,000 historically disengaged Medicare members",
+            pyxHow: "Push box creates a tangible, physical touchpoint that breaks through to members who haven't responded to traditional outreach — early engagement lift is the foundation for everything else",
+            action: "Two-wave push box launch (4,141 + ~2,500) followed by omni-channel outreach (telephone, SMS, email) and dedicated CSC support.",
+            metric: "Push boxes live · Wave 1: 4,141 (Apr 13) · Wave 2: ~2,500",
             metricPending: true
         },
         {
             clientGoal: "Goal #2",
-            statement: "Address CAHPS performance",
-            pyxHow: "SDOH screening, PHQ-4, and benefit reinforcement at opt-in for coordinated, frictionless member support",
-            action: "PRAPARE, PHQ-4, and UCLA-3 screenings completed at care barrier assessment. Identified needs triaged to CSC navigation.",
-            metric: "Screening data pending — activates post opt-in",
+            statement: "Improve CAHPS/HOS outcomes through increased engagement",
+            pyxHow: "Consistent, high-touch member experience — same CSC team, trusted touchpoints — builds member perception of the health plan and drives HOS health improvement ratings",
+            action: "UCLA-3 loneliness screening + PHQ-4 mental health assessment at opt-in. Benefit reinforcement and care navigation throughout engagement.",
+            metric: "CAHPS/HOS tracking activates through engagement data",
             metricPending: true
         },
         {
             clientGoal: "Goal #3",
-            statement: "Drive completion of preventive care milestones",
-            pyxHow: "Structured scheduling support and milestone-linked produce box incentives that convert outreach into completed care",
-            action: "AWV scheduling support, preventive care navigation, flu vaccine attestation workflow — each completion triggers a milestone box.",
-            metric: "Milestone tracking activates post opt-in",
+            statement: "Drive AWV completion and the preventive care cascade",
+            pyxHow: "AWV is the gateway — once completed, it triggers screenings, referrals, and the full preventive care sequence. Pyx structures the scheduling support and milestone incentives to get members there",
+            action: "AWV scheduling assistance, provider connection support, structured follow-through for colorectal, breast cancer, dental, and Hemoglobin A1c screenings.",
+            metric: "AWV and preventive attestation tracking activates post opt-in",
+            metricPending: true
+        },
+        {
+            clientGoal: "Goal #4",
+            statement: "Drive annual flu vaccine completion",
+            pyxHow: "Flu vaccine is a standalone HEDIS and CAHPS/HOS quality measure — Pyx tracks attestation directly and incentivizes completion with Milestone Box 5",
+            action: "Flu vaccine attestation workflow embedded in engagement sequence. Members receive Box 5 upon confirmation of annual flu vaccine receipt.",
+            metric: "Flu vaccine attestation tracking activates post opt-in",
+            metricPending: true
+        },
+        {
+            clientGoal: "Goal #5",
+            statement: "Identify and resolve care barriers",
+            pyxHow: "PRAPARE screening at opt-in surfaces transportation, access, food security, and housing barriers before they prevent care completion — not after",
+            action: "PRAPARE + PHQ-4 + UCLA-3 administered at care barrier assessment. Identified needs triaged immediately to CSC navigation and community resource connections.",
+            metric: "Barrier screening data pending — activates post opt-in",
             metricPending: true
         }
     ],
@@ -1051,20 +1081,20 @@ const D = {
         {
             phase: "Launch & Readiness",
             status: "current",
-            wellcareWondering: "Is Pyx ready to execute — and are our members going to respond?",
-            answer: "Implementation completed on schedule. Push box shipping launched April 13 in two waves: Wave 1 covered 4,141 members; Wave 2 followed with approximately 2,500 additional members, bringing total push box reach to ~6,641 of 7,000 eligible. Outreach infrastructure (telephone, SMS, toll-free CSC line) is live. The program is actively converting outreach into first opt-ins — results will be reflected in the May report."
+            wellcareWondering: "Is Pyx ready to execute quickly — and will the push box break through to these disengaged members?",
+            answer: "Implementation completed on schedule, meeting Wellcare's mandate for a fast April launch. Push box shipping launched April 13 across two waves: Wave 1 reached 4,141 members; Wave 2 followed with approximately 2,500 additional members, for ~6,641 total of 7,000 eligible. This population has historically been disengaged from the plan — the push box is designed to create a physical, tangible touchpoint that traditional outreach has failed to generate. Outreach infrastructure (telephone, SMS, toll-free CSC line) is live and weekly reporting cadence is active."
         },
         {
             phase: "Opt-In & Engagement",
             status: "future",
-            wellcareWondering: "What percentage of members are opting in — and what are we learning about their needs?",
-            answer: "Opt-in rate and care barrier assessment data will populate here once the first full month of outreach is complete. Target: 30% opt-in (2,100 members). Early screening data will reveal the SDOH and mental health burden across the Indiana member population."
+            wellcareWondering: "Are disengaged members responding — and what barriers are standing between them and care?",
+            answer: "Opt-in and care barrier assessment data will populate here once the first full month of outreach is complete. Target: 30% engagement/utilization (2,100 of 7,000). Early PRAPARE + PHQ-4 + UCLA-3 screening data will reveal the specific transportation, access, and social needs barriers that have kept this population disengaged — and allow Pyx to triage each member toward the right support pathway."
         },
         {
             phase: "Milestone Completion",
             status: "future",
-            wellcareWondering: "Are members actually completing AWVs and preventive screenings?",
-            answer: "AWV and preventive care attestation tracking activates as engaged members progress through the milestone sequence. Box 3 (AWV) and Box 4 (Preventive Screening) completions are the core quality drivers tied to CAHPS and Stars performance."
+            wellcareWondering: "Are members actually completing AWVs, preventive screenings, and flu vaccines — and is CAHPS/HOS moving?",
+            answer: "AWV and preventive care attestation tracking activates as engaged members progress through the milestone sequence. AWV completion triggers the full preventive care cascade (Box 3 → Box 4). Flu vaccine attestation is tracked separately (Box 5). These completions are the direct drivers of CAHPS/HOS score movement — success here reduces the disengaged member population and strengthens Wellcare Indiana's quality performance."
         }
     ],
 
@@ -1104,8 +1134,8 @@ const D = {
         {
             type: "risk",
             label: "Flag",
-            title: "Short Program Window — 9 Months to Drive CAHPS Movement",
-            desc: "CAHPS is a lagging measure — member experience scores reflect the full year. With go-live in April and program end December 31, the activation window is compressed. Milestone completions need to accelerate by Q3 to influence the measurement period.",
+            title: "Short Program Window — 9 Months to Drive CAHPS/HOS Movement",
+            desc: "CAHPS/HOS are lagging measures — member experience and health perception scores reflect the full year. With go-live in April and program end December 31, the activation window is compressed. Milestone completions need to accelerate by Q3 to influence the measurement period.",
             action: "Prioritize AWV scheduling cadence in Month 3–4. Flag for renewal conversation if data is strong at mid-year."
         }
     ],
@@ -1171,7 +1201,7 @@ function renderTimeline() {
         { name: "Launch & Readiness",    desc: "Implementation · Go-Live · Push Box Shipment",         state: "done" },
         { name: "Outreach & Opt-In",      desc: "Member outreach · Opt-in · Care barrier assessments",  state: "here" },
         { name: "Milestone Engagement",   desc: "AWV · Preventive Screenings · Flu Vaccine",            state: "" },
-        { name: "Outcomes & Value",       desc: "CAHPS movement · Quality impact · Renewal",            state: "" }
+        { name: "Outcomes & Value",       desc: "CAHPS/HOS movement · Quality impact · Renewal",       state: "" }
     ];
 
     document.getElementById('tl-track').innerHTML = phases.map(p => `
@@ -1378,7 +1408,7 @@ function renderValue() {
     `;
 
     document.getElementById('val-note').textContent =
-        'Conservative estimates only. CAHPS score movement value not quantified — plan-level revenue impact of even 0.5★ movement ranges from $2–$5 PMPM in Medicare Advantage bonus payments. Actuals will update as milestone completions are logged.';
+        'ROI for this program is not defined in dollars — success is measured through three lenses: (1) increased AWV and preventive visit/screening completion, (2) improved CAHPS/HOS scores, and (3) reduction in the disengaged member population. The dollar estimates above reflect conservative downstream utilization savings and are provided as directional context only. CAHPS/HOS revenue impact of even 0.5★ movement ranges from $2–$5 PMPM in Medicare Advantage bonus payments.';
 }
 
 
