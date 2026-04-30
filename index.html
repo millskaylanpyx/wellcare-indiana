@@ -857,7 +857,9 @@ const D = {
         sowTerm:            "February 1, 2026 – December 31, 2028",
         projectPlanId:      "20267001",
         goLiveDate:         "April 13, 2026",
-        initialCohort:      4141,
+        pushWave1:          4141,
+        pushWave2:          2500,
+        totalPushTarget:    6641,
         totalEligible:      7000,
         activationTarget:   2100,
         activationTargetPct: 0.30
@@ -881,11 +883,15 @@ const D = {
         {
             box: 1,
             label: "Initial Push Box",
-            desc: "Produce box sent to initial cohort of 4,141 members beginning April 13 to introduce the program and encourage opt-in",
-            trigger: "Go-Live (April 13, 2026) — Initial Cohort",
-            target: 4141,
+            desc: "Produce box sent to all eligible members across two waves to introduce the program and encourage opt-in",
+            trigger: "Wave 1: April 13 (4,141 members)  ·  Wave 2: ~2,500 members",
+            target: 6641,
             actual: null,   // pull from Tableau
-            status: "active"
+            status: "active",
+            waves: [
+                { label: "Wave 1", date: "April 13, 2026", count: 4141, shipped: true  },
+                { label: "Wave 2", date: "Follow-up",      count: 2500, shipped: false }
+            ]
         },
         {
             box: 2,
@@ -1020,7 +1026,7 @@ const D = {
             statement: "Increase member engagement",
             pyxHow: "Omni-channel outreach with high-touch CSC support and a consistent, welcoming member experience",
             action: "Push box at go-live drives initial response. Telephone, SMS, and email outreach supports opt-in and builds plan trust.",
-            metric: "Push box shipped April 13 · Initial cohort: 4,141 members",
+            metric: "Push boxes live · Wave 1: 4,141 · Wave 2: ~2,500 · Total scope: 7,000",
             metricPending: true
         },
         {
@@ -1046,7 +1052,7 @@ const D = {
             phase: "Launch & Readiness",
             status: "current",
             wellcareWondering: "Is Pyx ready to execute — and are our members going to respond?",
-            answer: "Implementation completed on schedule. Push boxes began shipping April 13 to an initial cohort of 4,141 members. Outreach infrastructure (telephone, SMS, toll-free CSC line) is live. The program is actively converting outreach into first opt-ins — results will be reflected in the May report."
+            answer: "Implementation completed on schedule. Push box shipping launched April 13 in two waves: Wave 1 covered 4,141 members; Wave 2 followed with approximately 2,500 additional members, bringing total push box reach to ~6,641 of 7,000 eligible. Outreach infrastructure (telephone, SMS, toll-free CSC line) is live. The program is actively converting outreach into first opt-ins — results will be reflected in the May report."
         },
         {
             phase: "Opt-In & Engagement",
@@ -1085,7 +1091,7 @@ const D = {
             type: "win",
             label: "Win",
             title: "On-Time Go-Live",
-            desc: "Implementation completed within the March 13–June 13 window. Push boxes began shipping April 13 to an initial cohort of 4,141 members. Hagy Wegener (Wellcare VP) confirmed satisfaction with launch execution.",
+            desc: "Implementation completed within the March 13–June 13 window. Push boxes shipped in two waves (Wave 1: 4,141 on April 13; Wave 2: ~2,500 follow-up), reaching ~6,641 of 7,000 eligible members. Hagy Wegener (Wellcare VP) confirmed satisfaction with launch execution.",
             action: "Capture in May QBR talking points as program credibility signal."
         },
         {
@@ -1186,8 +1192,8 @@ function renderKPIs() {
         {
             label: "Push Boxes Shipped",
             val:   M.pushBoxesShipped,
-            ctx:   M.pushBoxesShipped ? `of ${P.initialCohort.toLocaleString()} initial cohort` : `Initial cohort: ${P.initialCohort.toLocaleString()} members · Go-live Apr 13`,
-            good:  M.pushBoxesShipped >= P.initialCohort,
+            ctx:   M.pushBoxesShipped ? `of ${P.totalPushTarget.toLocaleString()} across 2 waves` : `Wave 1: 4,141 (Apr 13)  ·  Wave 2: ~2,500`,
+            good:  M.pushBoxesShipped >= P.totalPushTarget,
             color: ""
         },
         {
@@ -1257,6 +1263,18 @@ function renderMilestones() {
         const badgeClass = m.status === 'active' ? 'badge-active' : m.status === 'done' ? 'badge-done' : 'badge-pending';
         const badgeText = m.status === 'active' ? 'In Progress' : m.status === 'done' ? 'Complete' : 'Upcoming';
 
+        const waveTags = m.waves ? `
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+                ${m.waves.map(w => `
+                    <span style="
+                        font-size:10px;font-weight:700;letter-spacing:0.5px;
+                        padding:3px 10px;border-radius:20px;
+                        background:${w.shipped ? 'rgba(73,166,1,0.1)' : 'rgba(210,220,232,0.5)'};
+                        color:${w.shipped ? 'var(--green)' : '#8a9baa'};
+                    ">${w.label}: ${w.count.toLocaleString()} · ${w.date}${w.shipped ? ' ✓' : ''}</span>
+                `).join('')}
+            </div>` : '';
+
         return `
         <div class="ms-row ${m.status}">
             <div class="ms-box-badge">B${m.box}</div>
@@ -1264,6 +1282,7 @@ function renderMilestones() {
                 <div class="ms-info-label">${m.label}</div>
                 <div class="ms-info-desc">${m.desc}</div>
                 <div class="ms-trigger">↳ ${m.trigger}</div>
+                ${waveTags}
             </div>
             <div class="ms-progress">
                 <div style="font-size:11px;color:#8a9baa;font-weight:600;">
