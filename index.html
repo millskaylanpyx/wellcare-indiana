@@ -704,24 +704,24 @@
         </div>
     </div>
 
-    <!-- Timeline -->
-    <div class="timeline-bar">
-        <div class="wrap">
-            <div class="tl-label" id="tl-label"></div>
-            <div class="gantt-wrap" id="tl-track"></div>
-        </div>
-    </div>
-
     <!-- Program at a Glance -->
     <div class="white-bg">
         <div class="wrap"><div class="section">
             <div class="section-head">
                 <span class="section-eyebrow eyebrow-1">Program at a Glance</span>
                 <div class="section-title">Early Indicators</div>
-                <div class="section-sub">Key performance indicators for the Wellcare IN CAHPS &amp; Preventive Care Program — targeting ~7,000 historically disengaged Medicare members. Updated monthly from Pyx Tableau reporting.</div>
+                <div class="section-sub">Key performance indicators for the Wellcare IN CAHPS &amp; Preventive Care Program — targeting 7,000 historically disengaged Medicare members in Indiana. Updated monthly from Pyx Tableau reporting.</div>
             </div>
             <div class="kpi-grid" id="kpi-grid"></div>
         </div></div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-bar">
+        <div class="wrap">
+            <div class="tl-label" id="tl-label"></div>
+            <div class="gantt-wrap" id="tl-track"></div>
+        </div>
     </div>
 
     <!-- =============================================
@@ -1453,6 +1453,13 @@ function renderKPIs() {
     const { metrics: M, program: P } = D;
 
     const cards = [
+        {
+            label: "Total Population Scope",
+            val:   P.totalEligible,
+            ctx:   "Indiana Medicare members · Single market",
+            good:  false,
+            color: "slate"
+        },
         {
             label: "Push Boxes Shipped",
             val:   M.pushBoxesShipped,
