@@ -856,7 +856,8 @@ const D = {
         projectPlanEnd:     "December 31, 2026",
         sowTerm:            "February 1, 2026 – December 31, 2028",
         projectPlanId:      "20267001",
-        goLiveDate:         "April 6, 2026",
+        goLiveDate:         "April 13, 2026",
+        initialCohort:      4141,
         totalEligible:      7000,
         activationTarget:   2100,
         activationTargetPct: 0.30
@@ -880,9 +881,9 @@ const D = {
         {
             box: 1,
             label: "Initial Push Box",
-            desc: "Produce box sent to all 7,000 eligible members at go-live to introduce the program and encourage opt-in",
-            trigger: "Go-Live (April 6, 2026)",
-            target: 7000,
+            desc: "Produce box sent to initial cohort of 4,141 members beginning April 13 to introduce the program and encourage opt-in",
+            trigger: "Go-Live (April 13, 2026) — Initial Cohort",
+            target: 4141,
             actual: null,   // pull from Tableau
             status: "active"
         },
@@ -1019,7 +1020,7 @@ const D = {
             statement: "Increase member engagement",
             pyxHow: "Omni-channel outreach with high-touch CSC support and a consistent, welcoming member experience",
             action: "Push box at go-live drives initial response. Telephone, SMS, and email outreach supports opt-in and builds plan trust.",
-            metric: "Push box shipped April 6 · Opt-in tracking activating",
+            metric: "Push box shipped April 13 · Initial cohort: 4,141 members",
             metricPending: true
         },
         {
@@ -1045,7 +1046,7 @@ const D = {
             phase: "Launch & Readiness",
             status: "current",
             wellcareWondering: "Is Pyx ready to execute — and are our members going to respond?",
-            answer: "Implementation completed on schedule. Push boxes shipped the week of April 6 to all eligible Indiana members. Outreach infrastructure (telephone, SMS, toll-free CSC line) is live. The program is actively converting outreach into first opt-ins — results will be reflected in the May report."
+            answer: "Implementation completed on schedule. Push boxes began shipping April 13 to an initial cohort of 4,141 members. Outreach infrastructure (telephone, SMS, toll-free CSC line) is live. The program is actively converting outreach into first opt-ins — results will be reflected in the May report."
         },
         {
             phase: "Opt-In & Engagement",
@@ -1084,7 +1085,7 @@ const D = {
             type: "win",
             label: "Win",
             title: "On-Time Go-Live",
-            desc: "Implementation completed within the March 13–June 13 window. Push boxes shipped April 6 per the contract schedule. Hagy Wegener (Wellcare VP) confirmed satisfaction with launch execution.",
+            desc: "Implementation completed within the March 13–June 13 window. Push boxes began shipping April 13 to an initial cohort of 4,141 members. Hagy Wegener (Wellcare VP) confirmed satisfaction with launch execution.",
             action: "Capture in May QBR talking points as program credibility signal."
         },
         {
@@ -1185,8 +1186,8 @@ function renderKPIs() {
         {
             label: "Push Boxes Shipped",
             val:   M.pushBoxesShipped,
-            ctx:   M.pushBoxesShipped ? `of ${P.totalEligible.toLocaleString()} eligible` : `Target: ${P.totalEligible.toLocaleString()} members`,
-            good:  M.pushBoxesShipped >= P.totalEligible,
+            ctx:   M.pushBoxesShipped ? `of ${P.initialCohort.toLocaleString()} initial cohort` : `Initial cohort: ${P.initialCohort.toLocaleString()} members · Go-live Apr 13`,
+            good:  M.pushBoxesShipped >= P.initialCohort,
             color: ""
         },
         {

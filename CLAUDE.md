@@ -38,7 +38,7 @@ CLAUDE.md     — this file
 ## Milestone Box Structure (up to 5 boxes per member)
 | Box | Trigger |
 |-----|---------|
-| Box 1 | Push Box — go-live, all 7,000 eligible members |
+| Box 1 | Push Box — go-live April 13, initial cohort of 4,141 members |
 | Box 2 | Program Opt-In + Care Barrier Assessment |
 | Box 3 | Annual Wellness Visit (AWV) attestation |
 | Box 4 | Preventive Screening attestation (COL, BCS, dental, A1c) |
