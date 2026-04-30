@@ -869,7 +869,7 @@ const D = {
     },
 
     metrics: {
-        pushBoxesShipped:          null,   // pull from Tableau
+        pushBoxesShipped:          6641,   // Wave 1 (4,141) + Wave 2 (~2,500) — both complete
         membersOptedIn:            527,
         careBarrierAssessments:    null,   // pull from Tableau
         awvAttestations:           null,   // pull from Tableau
@@ -889,11 +889,11 @@ const D = {
             desc: "Produce box sent to all eligible members across two waves to introduce the program and encourage opt-in",
             trigger: "Wave 1: April 13 (4,141 members)  ·  Wave 2: ~2,500 members",
             target: 6641,
-            actual: null,   // pull from Tableau
-            status: "active",
+            actual: 6641,
+            status: "done",
             waves: [
-                { label: "Wave 1", date: "April 13, 2026", count: 4141, shipped: true  },
-                { label: "Wave 2", date: "Follow-up",      count: 2500, shipped: false }
+                { label: "Wave 1", date: "April 13, 2026", count: 4141, shipped: true },
+                { label: "Wave 2", date: "Follow-up",      count: 2500, shipped: true }
             ]
         },
         {
@@ -962,9 +962,9 @@ const D = {
         {
             name: "Push Box Delivery",
             target: 1.0,
-            actual: null,   // pull from Tableau
-            status: "active",
-            desc: "~6,641 eligible members reached across Wave 1 (4,141) and Wave 2 (~2,500)"
+            actual: 1.0,
+            status: "exceed",
+            desc: "6,641 members reached across Wave 1 (4,141) and Wave 2 (~2,500) — both waves complete"
         },
         {
             name: "Opt-In / Engagement Rate",
