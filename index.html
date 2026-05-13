@@ -672,6 +672,45 @@
             .client-header h1 { font-size: 28px; }
             .timeline-bar  { padding: 24px 20px; }
         }
+        /* =============================================
+           NET NEW UPDATES TAB
+        ============================================= */
+        .updates-hero {
+            background: linear-gradient(135deg, #1e3347 0%, var(--cool-slate) 100%);
+            padding: 48px 40px 40px;
+            color: var(--white);
+            border-bottom: 4px solid var(--teal);
+        }
+        .updates-hero .header-eyebrow { color: var(--teal); }
+        .updates-title { font-size: 36px; font-weight: 300; margin-bottom: 8px; }
+        .updates-title strong { font-weight: 700; color: var(--teal); }
+        .updates-period { font-size: 13px; color: var(--gray-1); }
+        .updates-period strong { color: var(--white); }
+
+        .change-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .change-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 22px 20px 18px;
+            border-left: 4px solid var(--teal);
+            box-shadow: 0 2px 10px rgba(46,68,86,0.07);
+        }
+        .change-card.green  { border-left-color: var(--green); }
+        .change-card.blue   { border-left-color: var(--blue); }
+        .change-card.purple { border-left-color: var(--purple); }
+        .chg-label { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8a9baa; margin-bottom: 14px; }
+        .chg-comparison { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+        .chg-before { font-family: 'Roboto Slab', serif; font-size: 18px; font-weight: 400; color: #b0bec8; text-decoration: line-through; }
+        .chg-arrow  { font-size: 16px; color: #b0bec8; flex-shrink: 0; }
+        .chg-after  { font-family: 'Roboto Slab', serif; font-size: 26px; font-weight: 700; color: var(--cool-slate); }
+        .chg-delta { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; background: rgba(73,166,1,0.12); color: var(--green); }
+        .chg-delta.new-badge { background: rgba(41,164,162,0.12); color: var(--teal); }
+
     </style>
 </head>
 <body>
@@ -683,6 +722,7 @@
     <div class="nav-logo">pyx <span>health</span></div>
     <button class="tab-btn active" onclick="switchTab('client',this)">Client View</button>
     <button class="tab-btn" onclick="switchTab('value',this)">Value View 💰</button>
+    <button class="tab-btn" onclick="switchTab('updates',this)">Net New Updates 🆕</button>
     <button class="tab-btn" onclick="switchTab('internal',this)">Internal View ⚙</button>
 </nav>
 
@@ -892,6 +932,62 @@
     </div>
 
 </div><!-- /tab-value -->
+
+
+<!-- =============================================
+     NET NEW UPDATES TAB
+============================================= -->
+<div id="tab-updates" class="tab-content">
+
+    <div class="updates-hero">
+        <div class="wrap">
+            <div class="header-eyebrow">Net New Updates</div>
+            <h1 class="updates-title">What's Changed Since <strong>Last Session</strong></h1>
+            <p class="updates-period">Previous update: <strong>April 30, 2026</strong> &nbsp;·&nbsp; Current: <strong>May 13, 2026</strong> &nbsp;·&nbsp; Month <strong>2 of 9</strong></p>
+        </div>
+    </div>
+
+    <div class="alt-bg section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="section-eyebrow eyebrow-2">Enrollment & Engagement</span>
+                <h2 class="section-title">Member Opt-In Movement</h2>
+                <p class="section-sub">Opt-in growth since April 30 — the primary leading indicator for all downstream milestone completion.</p>
+            </div>
+            <div class="change-grid" id="chg-enrollment"></div>
+        </div>
+    </div>
+
+    <div class="alt-bg section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="section-eyebrow eyebrow-3">Care Barrier Screenings</span>
+                <h2 class="section-title">First Screening Data Available</h2>
+                <p class="section-sub">PRAPARE, PHQ-4, and UCLA-3 screenings are now active — this data was not available in the April 30 report.</p>
+            </div>
+            <div class="change-grid" id="chg-screenings"></div>
+        </div>
+    </div>
+
+    <div class="white-bg section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="section-eyebrow eyebrow-4">Clinical Milestones</span>
+                <h2 class="section-title">Milestone Progress</h2>
+                <p class="section-sub">Box 3 (AWV Attestation) is now active — the first clinical milestone to open since go-live.</p>
+            </div>
+            <div class="change-grid" id="chg-milestones"></div>
+        </div>
+    </div>
+
+    <div class="tab-footer">
+        <div class="wrap footer-inner">
+            <div class="footer-logo">pyx <span>health</span></div>
+            <div id="upd-footer-meta"></div>
+        </div>
+    </div>
+
+</div><!-- /tab-updates -->
 
 
 <!-- =============================================
@@ -1862,6 +1958,77 @@ function renderIntFooter() {
 
 
 /* =============================================
+   NET NEW UPDATES
+============================================= */
+function renderUpdates() {
+    const prev = {
+        membersOptedIn:       527,
+        optInRate:            0.0753,
+        optInPctOfTarget:     527 / D.program.activationTarget,
+        revenueToDate:        0,
+        careBarrierMembers:   0,
+        careBarrierAssessments: 0,
+        prapare:              0,
+        phq4:                 0,
+        ucla3:                0,
+        awvAttestations:      0
+    };
+
+    function card(label, before, after, fmtType, color) {
+        const fmtV = v => {
+            if (v === 0 || v === null) return '—';
+            if (fmtType === '$') return '$' + v.toLocaleString();
+            if (fmtType === '%') return (v * 100).toFixed(1) + '%';
+            return v.toLocaleString();
+        };
+        const hasBefore = before !== 0 && before !== null;
+        const compHtml = hasBefore
+            ? `<span class="chg-before">${fmtV(before)}</span><span class="chg-arrow">→</span><span class="chg-after">${fmtV(after)}</span>`
+            : `<span class="chg-after">${fmtV(after)}</span>`;
+        let deltaHtml = '';
+        if (after) {
+            if (!hasBefore) {
+                deltaHtml = `<div class="chg-delta new-badge">NEW</div>`;
+            } else {
+                const d = fmtType === '%'
+                    ? `+${((after - before) * 100).toFixed(1)}pp`
+                    : fmtType === '$'
+                        ? `+$${(after - before).toLocaleString()}`
+                        : `+${(after - before).toLocaleString()} (+${Math.round((after - before) / before * 100)}%)`;
+                deltaHtml = `<div class="chg-delta">${d}</div>`;
+            }
+        }
+        return `<div class="change-card ${color || ''}">
+            <div class="chg-label">${label}</div>
+            <div class="chg-comparison">${compHtml}</div>
+            ${deltaHtml}
+        </div>`;
+    }
+
+    document.getElementById('chg-enrollment').innerHTML = [
+        card('Members Opted In',                prev.membersOptedIn,     D.metrics.membersOptedIn,                                        'n',  'blue'),
+        card('Opt-In Rate (% of 7,000)',         prev.optInRate,          D.metrics.optInRate,                                             '%',  'blue'),
+        card('% to Activation Target (2,100)',   prev.optInPctOfTarget,   D.metrics.membersOptedIn / D.program.activationTarget,           '%',  'blue'),
+    ].join('');
+
+    document.getElementById('chg-screenings').innerHTML = [
+        card('Members Screened (At Least One)',  prev.careBarrierMembers,      D.metrics.careBarrierMembers,      'n', ''),
+        card('Total Screening Sessions',         prev.careBarrierAssessments,  D.metrics.careBarrierAssessments,  'n', ''),
+        card('PRAPARE (SDOH)',                   prev.prapare,                 D.screenings[0].actual,            'n', ''),
+        card('PHQ-4 (Mental Health)',            prev.phq4,                    D.screenings[1].actual,            'n', ''),
+        card('UCLA-3 (Loneliness)',              prev.ucla3,                   D.screenings[2].actual,            'n', ''),
+    ].join('');
+
+    document.getElementById('chg-milestones').innerHTML = [
+        card('AWV Attestations (Box 3)', prev.awvAttestations, D.metrics.awvAttestations, 'n', 'purple'),
+    ].join('');
+
+    document.getElementById('upd-footer-meta').textContent =
+        `Changes since April 30, 2026 · Pyx Health · ${D.program.reportMonth}`;
+}
+
+
+/* =============================================
    INIT
 ============================================= */
 window.addEventListener('DOMContentLoaded', () => {
@@ -1882,6 +2049,7 @@ window.addEventListener('DOMContentLoaded', () => {
     renderCostTable();
     renderFlags();
     renderIntFooter();
+    renderUpdates();
 });
 
 </script>
