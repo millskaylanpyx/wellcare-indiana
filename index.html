@@ -499,6 +499,43 @@
         .val-total-amt { font-family: 'Roboto Slab', serif; font-size: 42px; font-weight: 700; }
         .val-note { font-size: 11px; color: rgba(255,255,255,0.4); font-style: italic; margin-top: 16px; line-height: 1.7; }
 
+        .val-activated {
+            display: inline-block;
+            font-size: 12px; font-weight: 700;
+            color: var(--light-green);
+            background: rgba(135,208,1,0.12);
+            border-radius: 8px;
+            padding: 7px 12px;
+            margin-bottom: 14px;
+        }
+
+        .val-leading-badge {
+            display: inline-block;
+            font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+            padding: 3px 10px; border-radius: 20px;
+            background: rgba(41,164,162,0.2); color: var(--teal);
+            margin-bottom: 10px;
+        }
+        .val-leading {
+            font-size: 12px; color: rgba(255,255,255,0.7);
+            line-height: 1.7; margin-bottom: 14px;
+        }
+
+        .val-pace {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            padding: 32px 36px;
+            margin-top: 24px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 24px;
+        }
+        .val-pace-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--light-green); margin-bottom: 8px; }
+        .val-pace-title { font-family: 'Roboto Slab', serif; font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+        .val-pace-sub   { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 560px; }
+        .val-pace-num   { font-family: 'Roboto Slab', serif; font-size: 52px; font-weight: 700; color: var(--light-green); line-height: 1; margin-bottom: 4px; text-align: right; }
+        .val-pace-ctx   { font-size: 11px; color: rgba(255,255,255,0.45); text-align: right; }
+
         /* =============================================
            GOALS MAPPING
         ============================================= */
@@ -892,6 +929,7 @@
             <div class="val-grid" id="val-grid"></div>
             <div id="val-total-block"></div>
             <p class="val-note" id="val-note"></p>
+            <div id="val-pace-block"></div>
         </div>
     </div>
 
@@ -1759,16 +1797,38 @@ function renderSLA() {
 function renderValue() {
     const activated = D.metrics.membersOptedIn || 0;
 
-    document.getElementById('val-grid').innerHTML = D.value.map(v => {
+    document.getElementById('val-grid').innerHTML = D.value.map((v, i) => {
         const estimated = v.valuePerMember && v.estimatePct
             ? Math.round(D.program.activationTarget * v.estimatePct * v.valuePerMember)
             : null;
+
+        // Card 0 — AWV: show value activated to date from real attestations
+        const activatedHtml = (i === 0 && D.metrics.awvAttestations && v.valuePerMember)
+            ? `<div class="val-activated">$${(D.metrics.awvAttestations * v.valuePerMember).toLocaleString()} activated to date · ${D.metrics.awvAttestations} completions</div>`
+            : '';
+
+        // Card 2 — CAHPS/HOS: flip from "Building" to leading indicators
+        const isCahps = i === 2;
+        const amountDisplay = estimated
+            ? '$' + estimated.toLocaleString()
+            : isCahps ? 'Leading Indicators Active' : 'Building';
+        const leadingHtml = isCahps ? `
+            <div class="val-leading-badge">Baseline Established</div>
+            <div class="val-leading">
+                <strong>${D.screenings[2].actual ?? '—'}</strong> UCLA-3 loneliness baselines established &nbsp;·&nbsp;
+                <strong>${D.screenings[1].actual ?? '—'}</strong> PHQ-4 mental health screens complete &nbsp;·&nbsp;
+                CAHPS/HOS longitudinal tracking begins here. Early enrollment maximizes the data
+                collection window — <strong>${D.metrics.membersOptedIn.toLocaleString()} members</strong> already
+                engaged, with 7 months remaining to build the longitudinal record CAHPS/HOS scoring demands.
+            </div>` : '';
 
         return `
         <div class="val-card">
             <div class="val-icon">${v.icon}</div>
             <div class="val-lbl">${v.label}</div>
-            <div class="val-amount">${estimated ? '$' + estimated.toLocaleString() : 'Building'}</div>
+            <div class="val-amount">${amountDisplay}</div>
+            ${activatedHtml}
+            ${leadingHtml}
             <div class="val-desc">${v.desc}</div>
             <div class="val-source">${v.source}</div>
         </div>
@@ -1794,6 +1854,8 @@ function renderValue() {
 
     document.getElementById('val-note').textContent =
         'The dollar estimates above reflect conservative downstream utilization savings and are provided as directional context only. CAHPS/HOS revenue impact of even 0.5★ movement ranges from $2–$5 PMPM in Medicare Advantage bonus payments.';
+
+    document.getElementById('val-pace-block').innerHTML = '';
 
     const valFooter = document.getElementById('val-footer-meta');
     if (valFooter) {
