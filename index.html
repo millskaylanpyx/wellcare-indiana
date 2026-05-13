@@ -996,7 +996,7 @@ const D = {
         membersOptedIn:            856,
         careBarrierAssessments:    702,    // total unique screening sessions as of May 13
         careBarrierMembers:        201,    // unique members with at least one screening
-        awvAttestations:           null,   // pull from Tableau
+        awvAttestations:           70,     // as of May 13, 2026
         preventiveAttestations:    null,   // pull from Tableau
         fluVaccineAttestations:    null,   // pull from Tableau
         optInRate:                 0.1223, // 856 / 7,000 eligible
@@ -1035,8 +1035,8 @@ const D = {
             desc: "Member attests to completing an Annual Wellness Visit with their primary care provider",
             trigger: "AWV Attestation",
             target: 2100,
-            actual: null,   // pull from Tableau
-            status: "pending"
+            actual: 70,
+            status: "active"
         },
         {
             box: 4,
@@ -1107,9 +1107,9 @@ const D = {
         {
             name: "AWV Attestation",
             target: null,
-            actual: null,   // pull from Tableau
-            status: "pending",
-            desc: "Enrolled members who attest to completing Annual Wellness Visit"
+            actual: 70,
+            status: "active",
+            desc: "70 enrolled members have attested to completing their Annual Wellness Visit — 8.2% of opted-in members"
         },
         {
             name: "Flu Vaccine Attestation",
