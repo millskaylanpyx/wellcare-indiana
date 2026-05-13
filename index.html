@@ -1292,7 +1292,7 @@ const D = {
             stats: [
                 { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of April 30",            color: "blue"   },
                 { label: "Opt-In Rate",               valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% (2,100)",       color: ""       },
-                { label: "Care Barrier Assessments", valKey: "careBarrierAssessments",  fallback: "Pending", ctx: "Activates with opt-in",     color: "teal"   },
+                { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: M.careBarrierAssessments ? `${M.careBarrierAssessments} total screenings completed` : "Activates with opt-in", color: "teal" },
                 { label: "Outreach Channels",         val: "3 Active",                  ctx: "Phone · SMS · Email",                              color: "slate"  }
             ]
         },
