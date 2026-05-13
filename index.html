@@ -975,9 +975,9 @@
 ============================================= */
 const D = {
     program: {
-        reportMonth:        "April 2026",
-        dataAsOf:           "April 29, 2026",
-        programMonth:       "1 of 9",
+        reportMonth:        "May 2026",
+        dataAsOf:           "May 13, 2026",
+        programMonth:       "2 of 9",
         projectPlanStart:   "March 13, 2026",
         projectPlanEnd:     "December 31, 2026",
         sowTerm:            "February 1, 2026 – December 31, 2028",
@@ -993,12 +993,13 @@ const D = {
 
     metrics: {
         pushBoxesShipped:          6711,   // Wave 1 (4,141 · Apr 13) + Wave 2 (2,570 · Apr 20) — both complete
-        membersOptedIn:            527,
-        careBarrierAssessments:    null,   // pull from Tableau
+        membersOptedIn:            856,
+        careBarrierAssessments:    702,    // total unique screening sessions as of May 13
+        careBarrierMembers:        201,    // unique members with at least one screening
         awvAttestations:           null,   // pull from Tableau
         preventiveAttestations:    null,   // pull from Tableau
         fluVaccineAttestations:    null,   // pull from Tableau
-        optInRate:                 0.0753, // 527 / 7,000 eligible
+        optInRate:                 0.1223, // 856 / 7,000 eligible
         sdohNeedPct:               null,   // pull from Tableau
         avgSocialNeeds:            null,   // pull from Tableau
         phq4Avg:                   null,   // pull from Tableau
@@ -1025,7 +1026,7 @@ const D = {
             desc: "Member opts into program and completes Care Barrier Assessment (PRAPARE + PHQ-4 + UCLA-3)",
             trigger: "Opt-In + Care Barrier Assessment",
             target: 2100,
-            actual: null,   // pull from Tableau
+            actual: 856,
             status: "active"
         },
         {
@@ -1061,21 +1062,21 @@ const D = {
         {
             icon: "🏠",
             name: "PRAPARE (SDOH)",
-            actual: null,   // pull from Tableau
+            actual: 192,
             avgNeeds: null, // pull from Tableau
             desc: "Members screened for social determinants of health — food, housing, transportation, economic stability"
         },
         {
             icon: "🧠",
             name: "PHQ-4 (Mental Health)",
-            actual: null,   // pull from Tableau
+            actual: 184,
             avgScore: null, // pull from Tableau
             desc: "4-question anxiety and depression screen administered at opt-in"
         },
         {
             icon: "🤝",
             name: "UCLA-3 (Loneliness)",
-            actual: null,   // pull from Tableau
+            actual: 190,
             avgScore: null, // pull from Tableau
             desc: "3-item loneliness assessment — a key driver of CAHPS/HOS member experience and health perception scores"
         }
@@ -1092,16 +1093,16 @@ const D = {
         {
             name: "Opt-In / Engagement Rate",
             target: 0.30,
-            actual: 0.0753, // 527 of 7,000 — 2.5 weeks post go-live
+            actual: 0.1223, // 856 of 7,000 — end of Month 2
             status: "ramping",
-            desc: "527 members opted in — 2.5 weeks post go-live on a historically disengaged population. Program runs through December 31."
+            desc: "856 members opted in as of May 13 — 40.8% of the 2,100 activation target. Program runs through December 31."
         },
         {
             name: "Care Barrier Completion",
             target: 0.80,
-            actual: null,   // pull from Tableau
-            status: "pending",
-            desc: "Opted-in members completing PRAPARE + PHQ-4 + UCLA-3 assessment"
+            actual: 0.235,  // 201 unique members / 856 opted-in
+            status: "active",
+            desc: "201 unique members have completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) — 23.5% of opted-in members"
         },
         {
             name: "AWV Attestation",
@@ -1214,7 +1215,7 @@ const D = {
             phase: "Opt-In & Engagement",
             status: "current",
             wellcareWondering: "Are disengaged members responding — and what barriers are standing between them and care?",
-            answer: "527 members have opted in as of April 30 — 7.5% of the 7,000 eligible population, with only ~2.5 weeks of outreach since go-live. This is an early read on a historically disengaged population and will build as outreach cadence continues. Full care barrier assessment data (PRAPARE + PHQ-4 + UCLA-3) will populate in the May report once the first complete outreach cycle is logged. Target remains 30% engagement/utilization (2,100 members) over the program term."
+            answer: "856 members have opted in as of May 13 — 12.2% of the 7,000 eligible population and 40.8% of the 2,100 activation target, through Month 2 of the program. Revenue to date is $41,630 across WelcomeEngagement and OngoingEngagement services. Care barrier assessment data (PRAPARE + PHQ-4 + UCLA-3) will populate in the June report as the outreach cycle matures. Target remains 30% engagement/utilization (2,100 members) over the program term."
         },
         {
             phase: "Milestone Completion",
@@ -1226,7 +1227,7 @@ const D = {
 
     revenue: {
         contractMax:        1288328,
-        revenueToDate:      null,    // update monthly — pull from finance
+        revenueToDate:      41630,   // as of May 13, 2026
         pushBoxRevenue:     null,    // $49 × boxes shipped
         engagementRevenue:  null,    // $55 × members × months + $30 activation
         platformFee:        50000
@@ -1253,9 +1254,9 @@ const D = {
         {
             type: "watch",
             label: "Watch",
-            title: "Opt-In Rate — First Full Month Pending",
-            desc: "Program is in Week 3 of outreach. Opt-in data is not yet statistically meaningful. May report will be the first real read on member responsiveness to the push box + outreach cadence.",
-            action: "Pull Tableau opt-in data by May 15 for May report preparation."
+            title: "Opt-In Momentum — 40.8% to Activation Target",
+            desc: "856 members enrolled through Month 2 — 40.8% of the 2,100 activation target. Monthly enrollment target is 800; 362 still needed this month as of May 13. Pace needs to hold through Q3 to hit full-year goal.",
+            action: "Monitor weekly enrollment cadence; pull updated Tableau data by June 1 for June report."
         },
         {
             type: "risk",
@@ -1485,7 +1486,7 @@ function renderKPIs() {
         {
             label: "Care Barrier Assessments",
             val:   M.careBarrierAssessments,
-            ctx:   M.careBarrierAssessments && M.membersOptedIn ? `${((M.careBarrierAssessments / M.membersOptedIn) * 100).toFixed(0)}% of opted-in members` : "Activates post opt-in",
+            ctx:   M.careBarrierMembers ? `${M.careBarrierMembers} unique members screened` : "Activates post opt-in",
             good:  false,
             color: "teal"
         },
