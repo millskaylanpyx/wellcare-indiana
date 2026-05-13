@@ -1484,9 +1484,9 @@ function renderKPIs() {
             color: "blue"
         },
         {
-            label: "Care Barrier Assessments",
-            val:   M.careBarrierAssessments,
-            ctx:   M.careBarrierMembers ? `${M.careBarrierMembers} unique members screened` : "Activates post opt-in",
+            label: "Members with Completed Care Barrier Assessments",
+            val:   M.careBarrierMembers,
+            ctx:   M.careBarrierAssessments ? `${M.careBarrierAssessments} total screenings completed` : "Activates post opt-in",
             good:  false,
             color: "teal"
         },
