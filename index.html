@@ -1229,6 +1229,7 @@ const D = {
             target: 0.30,
             actual: 0.1223, // 856 of 7,000 — end of Month 2
             status: "ramping",
+            showProgress: true,
             desc: "856 members opted in as of May 13 — 40.8% of the 2,100 activation target. Program runs through December 31."
         },
         {
@@ -1757,6 +1758,12 @@ function renderMilestones() {
                 <div class="ms-info-desc">${m.desc}</div>
                 <div class="ms-trigger">↳ ${m.trigger}</div>
                 ${waveTags}
+                ${m.box === 2 && D.metrics.membersOptedIn && D.metrics.careBarrierMembers ? `
+                <div style="margin-top:8px;font-size:11px;color:#6b808f;line-height:1.6;">
+                    <strong style="color:var(--cool-slate);">${D.metrics.membersOptedIn.toLocaleString()}</strong> members opted in
+                    &nbsp;·&nbsp;
+                    <strong style="color:var(--cool-slate);">${D.metrics.careBarrierMembers.toLocaleString()}</strong> completed a care barrier assessment
+                </div>` : ''}
             </div>
             <div class="ms-progress">
                 <div style="font-size:11px;color:#8a9baa;font-weight:600;">
@@ -1805,11 +1812,20 @@ function renderSLA() {
         const actualDisplay = s.actual !== null ? fmt(s.actual, '%') :
                               s.status === 'active' ? 'In Progress' : '—';
 
+        const progressHtml = s.showProgress && s.actual !== null && s.target ? `
+            <div class="ms-prog-track" style="margin-top:10px;margin-bottom:4px;">
+                <div class="ms-prog-fill blue" style="width:${Math.min(Math.round(s.actual / s.target * 100), 100)}%"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:#8a9baa;margin-bottom:8px;">
+                <span>0%</span><span>30% goal</span>
+            </div>` : '';
+
         return `
         <div class="sla-card ${statusClass}">
             <div class="sla-name">${s.name}</div>
             <div class="sla-actual">${actualDisplay}</div>
             ${s.target ? `<div class="sla-target">Target: ${fmt(s.target,'%')}</div>` : ''}
+            ${progressHtml}
             <div class="sla-desc">${s.desc}</div>
             <span class="sla-badge ${badgeClass}">${badgeText}</span>
         </div>
