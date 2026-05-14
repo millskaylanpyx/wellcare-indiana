@@ -1425,7 +1425,7 @@ const D = {
             answer: "527 members have opted in as of April 30 — 7.5% of the 7,000 eligible population after just 2.5 weeks of outreach. For a historically disengaged Medicare population, this is early momentum. Care barrier assessment data (PRAPARE, PHQ-4, UCLA-3) will populate in the May report as the first full outreach cycle completes, revealing the specific barriers driving disengagement.",
             stats: [
                 { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of April 30",            color: "blue"   },
-                { label: "Opt-In Rate",               valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% (2,100)",       color: ""       },
+                { label: "Member Enrollment Rate",    valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% · 2,100 members", color: "", progressTarget: 0.30 },
                 { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: "702 total screenings completed", color: "teal" },
                 { label: "Outreach Channels",         val: "3 Active",                  ctx: "Phone · SMS · Email",                              color: "slate"  }
             ]
@@ -1708,11 +1708,20 @@ function renderJourney() {
                     displayVal = s.val;
                 }
                 const isPending = s.valKey && D.metrics[s.valKey] === null;
+                const raw = s.valKey ? D.metrics[s.valKey] : null;
+                const progressHtml = s.progressTarget && raw !== null && raw !== undefined ? `
+                    <div class="ms-prog-track" style="margin-top:10px;">
+                        <div class="ms-prog-fill blue" style="width:${Math.min(Math.round(raw / s.progressTarget * 100), 100)}%"></div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:10px;color:#8a9baa;margin-top:4px;">
+                        <span>0%</span><span>30% goal</span>
+                    </div>` : '';
                 return `
                 <div class="kpi ${s.color || ''}">
                     <div class="kpi-lbl">${s.label}</div>
                     <div class="kpi-val ${isPending ? 'pending' : ''}">${displayVal}</div>
                     <div class="kpi-ctx">${s.ctx}</div>
+                    ${progressHtml}
                 </div>
                 `;
             }).join('');
