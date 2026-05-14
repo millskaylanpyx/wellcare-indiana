@@ -1613,9 +1613,17 @@ function renderKPIs() {
         {
             label: "Members Opted In",
             val:   M.membersOptedIn,
-            ctx:   M.optInRate ? `${fmt(M.optInRate,'%')} opt-in rate` : `Target: ${P.activationTarget.toLocaleString()} (30%)`,
-            good:  M.optInRate >= 0.30,
+            ctx:   `of ${P.totalEligible.toLocaleString()} eligible members`,
+            good:  false,
             color: "blue"
+        },
+        {
+            label: "Member Enrollment Rate",
+            val:   M.optInRate !== null ? fmt(M.optInRate, '%') : null,
+            ctx:   `Target: 30% · ${P.activationTarget.toLocaleString()} members`,
+            good:  M.optInRate >= 0.30,
+            color: "blue",
+            progress: M.optInRate !== null ? Math.min(Math.round(M.optInRate / 0.30 * 100), 100) : null
         },
         {
             label: "Members with Completed Care Barrier Assessments",
@@ -1654,6 +1662,13 @@ function renderKPIs() {
                 ${c.val !== null ? c.val.toLocaleString() : 'Pending'}
             </div>
             <div class="kpi-ctx ${c.good ? 'good' : ''}">${c.ctx}</div>
+            ${c.progress !== null && c.progress !== undefined ? `
+                <div class="ms-prog-track" style="margin-top:10px;">
+                    <div class="ms-prog-fill blue" style="width:${c.progress}%"></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:10px;color:#8a9baa;margin-top:4px;">
+                    <span>0%</span><span>30% goal</span>
+                </div>` : ''}
         </div>
     `).join('');
 }
