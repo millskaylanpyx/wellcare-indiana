@@ -1212,7 +1212,7 @@ const D = {
         membersOptedIn:            1236,
         careBarrierAssessments:    4779,   // total unique screening sessions as of May 28
         careBarrierMembers:        1162,   // unique members with at least one screening
-        awvAttestations:           295,    // as of May 13, 2026
+        awvAttestations:           295,    // as of May 28, 2026
         preventiveAttestations:    106,    // as of May 28, 2026
         fluVaccineAttestations:    null,   // pull from Tableau
         optInRate:                 0.1766, // 1,236 / 7,000 eligible
@@ -1451,7 +1451,7 @@ const D = {
 
     revenue: {
         contractMax:        1288328,
-        revenueToDate:      41630,   // as of May 13, 2026
+        revenueToDate:      41630,   // as of May 28, 2026
         pushBoxRevenue:     null,    // $49 × boxes shipped
         engagementRevenue:  null,    // $55 × members × months + $30 activation
         platformFee:        50000
@@ -1514,7 +1514,7 @@ const D = {
             wondering: "Are historically disengaged members actually responding to outreach — and what care barriers are standing between them and care?",
             answer: "1,236 members have opted in as of May 13 — 17.7% of the 7,000 eligible population and 58.9% of the 2,100 activation target through Month 2. Care barrier screening is now active: 1,162 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3), with 4,779 total screening sessions logged.",
             stats: [
-                { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of May 13, 2026",            color: "blue"   },
+                { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of May 28, 2026",            color: "blue"   },
                 { label: "Member Enrollment Rate",    valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% · 2,100 members", color: "", progressTarget: 0.30 },
                 { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: "4,779 total screenings completed", color: "teal" },
                 { label: "Outreach Channels",         val: "3 Active",                  ctx: "Phone · SMS · Email",                              color: "slate"  }
