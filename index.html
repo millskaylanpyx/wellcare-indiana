@@ -1101,7 +1101,7 @@
 const D = {
     program: {
         reportMonth:        "May 2026",
-        dataAsOf:           "May 13, 2026",
+        dataAsOf:           "May 28, 2026",
         programMonth:       "2 of 9",
         projectPlanStart:   "March 13, 2026",
         projectPlanEnd:     "December 31, 2026",
@@ -1119,16 +1119,16 @@ const D = {
     metrics: {
         pushBoxesShipped:          6711,   // Wave 1 (4,141 · Apr 13) + Wave 2 (2,570 · Apr 20) — both complete
         membersOptedIn:            1236,
-        careBarrierAssessments:    702,    // total unique screening sessions as of May 13
-        careBarrierMembers:        201,    // unique members with at least one screening
+        careBarrierAssessments:    4779,   // total unique screening sessions as of May 28
+        careBarrierMembers:        1162,   // unique members with at least one screening
         awvAttestations:           295,    // as of May 13, 2026
         preventiveAttestations:    null,   // pull from Tableau
         fluVaccineAttestations:    null,   // pull from Tableau
         optInRate:                 0.1766, // 1,236 / 7,000 eligible
-        sdohNeedPct:               null,   // pull from Tableau
-        avgSocialNeeds:            null,   // pull from Tableau
-        phq4Avg:                   null,   // pull from Tableau
-        ucla3Avg:                  null    // pull from Tableau
+        sdohNeedPct:               0.953,  // 1,089 of 1,143 PRAPARE members had Score > 0
+        avgSocialNeeds:            2.13,   // avg PRAPARE Total_Score across members
+        phq4Avg:                   1.75,   // avg PHQ-4 Total_Score across members
+        ucla3Avg:                  4.07    // avg UCLA-3 Total_Score across members
     },
 
     milestones: [
@@ -1187,29 +1187,29 @@ const D = {
         {
             icon: "🏠",
             name: "PRAPARE (SDOH)",
-            actual: 192,
-            avgNeeds: null, // pull from Tableau
+            actual: 1143,
+            avgNeeds: 2.13,
             desc: "Members screened for social determinants of health — food, housing, transportation, economic stability"
         },
         {
             icon: "🧠",
             name: "PHQ-4 (Mental Health)",
-            actual: 184,
-            avgScore: null, // pull from Tableau
+            actual: 1106,
+            avgScore: 1.75,
             desc: "4-question anxiety and depression screen administered at opt-in"
         },
         {
             icon: "🤝",
             name: "UCLA-3 (Loneliness)",
-            actual: 190,
-            avgScore: null, // pull from Tableau
+            actual: 1137,
+            avgScore: 4.07,
             desc: "3-item loneliness assessment — a key driver of CAHPS/HOS member experience and health perception scores"
         },
         {
             icon: "🏥",
             name: "Medicare Well-Being / HOS",
-            actual: 136,
-            avgScore: null,
+            actual: 926,
+            avgScore: 2.58,
             desc: "HOS-related assessment covering physical and mental health status and medication adherence — directly informs HOS baseline and year-over-year health improvement scoring"
         }
     ],
@@ -1233,9 +1233,9 @@ const D = {
         {
             name: "Care Barrier Completion",
             target: 0.80,
-            actual: 0.163,  // 201 unique members / 1,236 opted-in
-            status: "active",
-            desc: "201 unique members have completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) — 16.3% of opted-in members"
+            actual: 0.941,  // 1,162 unique members / 1,236 opted-in
+            status: "exceed",
+            desc: "1,162 unique members have completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) — 94.1% of opted-in members"
         },
         {
             name: "AWV Attestation",
@@ -1421,11 +1421,11 @@ const D = {
             timing: "April 2026 — Ongoing",
             state: "here",
             wondering: "Are historically disengaged members actually responding to outreach — and what care barriers are standing between them and care?",
-            answer: "1,236 members have opted in as of May 13 — 17.7% of the 7,000 eligible population and 58.9% of the 2,100 activation target through Month 2. Care barrier screening is now active: 201 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3), with 702 total screening sessions logged.",
+            answer: "1,236 members have opted in as of May 13 — 17.7% of the 7,000 eligible population and 58.9% of the 2,100 activation target through Month 2. Care barrier screening is now active: 1,162 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3), with 4,779 total screening sessions logged.",
             stats: [
                 { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of May 13, 2026",            color: "blue"   },
                 { label: "Member Enrollment Rate",    valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% · 2,100 members", color: "", progressTarget: 0.30 },
-                { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: "702 total screenings completed", color: "teal" },
+                { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: "4,779 total screenings completed", color: "teal" },
                 { label: "Outreach Channels",         val: "3 Active",                  ctx: "Phone · SMS · Email",                              color: "slate"  }
             ]
         },
