@@ -1118,13 +1118,13 @@ const D = {
 
     metrics: {
         pushBoxesShipped:          6711,   // Wave 1 (4,141 · Apr 13) + Wave 2 (2,570 · Apr 20) — both complete
-        membersOptedIn:            856,
+        membersOptedIn:            1236,
         careBarrierAssessments:    702,    // total unique screening sessions as of May 13
         careBarrierMembers:        201,    // unique members with at least one screening
         awvAttestations:           70,     // as of May 13, 2026
         preventiveAttestations:    null,   // pull from Tableau
         fluVaccineAttestations:    null,   // pull from Tableau
-        optInRate:                 0.1223, // 856 / 7,000 eligible
+        optInRate:                 0.1766, // 1,236 / 7,000 eligible
         sdohNeedPct:               null,   // pull from Tableau
         avgSocialNeeds:            null,   // pull from Tableau
         phq4Avg:                   null,   // pull from Tableau
@@ -1151,7 +1151,7 @@ const D = {
             desc: "Member opts into program and completes Care Barrier Assessment (PRAPARE + PHQ-4 + UCLA-3)",
             trigger: "Opt-In + Care Barrier Assessment",
             target: 2100,
-            actual: 856,
+            actual: 1236,
             status: "active"
         },
         {
@@ -1225,24 +1225,24 @@ const D = {
         {
             name: "Opt-In / Engagement Rate",
             target: 0.30,
-            actual: 0.1223, // 856 of 7,000 — end of Month 2
+            actual: 0.1766, // 1,236 of 7,000 — end of Month 2
             status: "ramping",
             showProgress: true,
-            desc: "856 members opted in as of May 13 — 40.8% of the 2,100 activation target. Program runs through December 31."
+            desc: "1,236 members opted in as of May 13 — 58.9% of the 2,100 activation target. Program runs through December 31."
         },
         {
             name: "Care Barrier Completion",
             target: 0.80,
-            actual: 0.235,  // 201 unique members / 856 opted-in
+            actual: 0.163,  // 201 unique members / 1,236 opted-in
             status: "active",
-            desc: "201 unique members have completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) — 23.5% of opted-in members"
+            desc: "201 unique members have completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) — 16.3% of opted-in members"
         },
         {
             name: "AWV Attestation",
             target: null,
             actual: 70,
             status: "active",
-            desc: "70 enrolled members have attested to completing their Annual Wellness Visit — 8.2% of opted-in members"
+            desc: "70 enrolled members have attested to completing their Annual Wellness Visit — 5.7% of opted-in members"
         },
         {
             name: "Flu Vaccine Attestation",
@@ -1348,7 +1348,7 @@ const D = {
             phase: "Opt-In & Engagement",
             status: "current",
             wellcareWondering: "Are disengaged members responding — and what barriers are standing between them and care?",
-            answer: "856 members have opted in as of May 13 — 12.2% of the 7,000 eligible population and 40.8% of the 2,100 activation target, through Month 2 of the program. Revenue to date is $41,630 across WelcomeEngagement and OngoingEngagement services. Care barrier assessment data (PRAPARE + PHQ-4 + UCLA-3) will populate in the June report as the outreach cycle matures. Target remains 30% engagement/utilization (2,100 members) over the program term."
+            answer: "1,236 members have opted in as of May 13 — 17.7% of the 7,000 eligible population and 58.9% of the 2,100 activation target, through Month 2 of the program. Revenue to date is $41,630 across WelcomeEngagement and OngoingEngagement services. Care barrier assessment data (PRAPARE + PHQ-4 + UCLA-3) will populate in the June report as the outreach cycle matures. Target remains 30% engagement/utilization (2,100 members) over the program term."
         },
         {
             phase: "Milestone Completion",
@@ -1387,8 +1387,8 @@ const D = {
         {
             type: "watch",
             label: "Watch",
-            title: "Opt-In Momentum — 40.8% to Activation Target",
-            desc: "856 members enrolled through Month 2 — 40.8% of the 2,100 activation target. Monthly enrollment target is 800; 362 still needed this month as of May 13. Pace needs to hold through Q3 to hit full-year goal.",
+            title: "Opt-In Momentum — 58.9% to Activation Target",
+            desc: "1,236 members enrolled through Month 2 — 58.9% of the 2,100 activation target, exceeding the 800 monthly milestone target. Pace needs to hold through Q3 to hit full-year goal.",
             action: "Monitor weekly enrollment cadence; pull updated Tableau data by June 1 for June report."
         },
         {
@@ -1421,7 +1421,7 @@ const D = {
             timing: "April 2026 — Ongoing",
             state: "here",
             wondering: "Are historically disengaged members actually responding to outreach — and what care barriers are standing between them and care?",
-            answer: "856 members have opted in as of May 13 — 12.2% of the 7,000 eligible population and 40.8% of the 2,100 activation target through Month 2. Care barrier screening is now active: 201 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3), with 702 total screening sessions logged.",
+            answer: "1,236 members have opted in as of May 13 — 17.7% of the 7,000 eligible population and 58.9% of the 2,100 activation target through Month 2. Care barrier screening is now active: 201 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3), with 702 total screening sessions logged.",
             stats: [
                 { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of May 13, 2026",            color: "blue"   },
                 { label: "Member Enrollment Rate",    valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% · 2,100 members", color: "", progressTarget: 0.30 },
