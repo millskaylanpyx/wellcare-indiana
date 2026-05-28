@@ -1051,7 +1051,7 @@
         <div class="wrap">
             <div class="header-eyebrow">Net New Updates</div>
             <h1 class="updates-title">What's Changed Since <strong>Last Session</strong></h1>
-            <p class="updates-period">Previous update: <strong>April 30, 2026</strong> &nbsp;·&nbsp; Current: <strong>May 13, 2026</strong> &nbsp;·&nbsp; Month <strong>2 of 9</strong></p>
+            <p class="updates-period">Previous update: <strong>April 30, 2026</strong> &nbsp;·&nbsp; Current: <strong id="upd-current-date"></strong> &nbsp;·&nbsp; Month <strong>2 of 9</strong></p>
         </div>
     </div>
 
@@ -2308,6 +2308,7 @@ function renderUpdates() {
         card('AWV Attestations (Box 3)', prev.awvAttestations, D.metrics.awvAttestations, 'n', 'purple'),
     ].join('');
 
+    document.getElementById('upd-current-date').textContent = D.program.dataAsOf;
     document.getElementById('upd-footer-meta').textContent =
         `Changes since April 30, 2026 · Pyx Health · ${D.program.reportMonth}`;
 }
