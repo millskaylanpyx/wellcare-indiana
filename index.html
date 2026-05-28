@@ -1213,7 +1213,7 @@ const D = {
         careBarrierAssessments:    4779,   // total unique screening sessions as of May 28
         careBarrierMembers:        1162,   // unique members with at least one screening
         awvAttestations:           295,    // as of May 13, 2026
-        preventiveAttestations:    null,   // pull from Tableau
+        preventiveAttestations:    106,    // as of May 28, 2026
         fluVaccineAttestations:    null,   // pull from Tableau
         optInRate:                 0.1766, // 1,236 / 7,000 eligible
         sdohNeedPct:               0.953,  // 1,089 of 1,143 PRAPARE members had Score > 0
@@ -1260,8 +1260,8 @@ const D = {
             desc: "Member attests to completing a PCP-recommended preventive screening: colorectal cancer, breast cancer, dental visit, or Hemoglobin A1c",
             trigger: "Preventive Care Attestation",
             target: 2100,
-            actual: null,   // pull from Tableau
-            status: "pending"
+            actual: 106,
+            status: "active"
         },
         {
             box: 5,
