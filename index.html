@@ -407,9 +407,10 @@
             padding: 24px;
             box-shadow: 0 2px 8px rgba(46,68,86,0.06);
         }
-        .insight-card.phq4  { border-top: 4px solid var(--purple); }
-        .insight-card.ucla3 { border-top: 4px solid var(--teal); }
-        .insight-card.hos   { border-top: 4px solid var(--blue); }
+        .insight-card.prapare { border-top: 4px solid var(--green); }
+        .insight-card.phq4    { border-top: 4px solid var(--purple); }
+        .insight-card.ucla3   { border-top: 4px solid var(--teal); }
+        .insight-card.hos     { border-top: 4px solid var(--blue); }
 
         .insight-hdr {
             display: flex; align-items: center; gap: 10px;
@@ -429,6 +430,7 @@
         .insight-avg-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #8a9baa; margin-bottom: 5px; }
         .insight-avg-track { height: 6px; background: var(--gray-2); border-radius: 3px; }
         .insight-avg-fill  { height: 100%; border-radius: 3px; }
+        .fill-green  { background: var(--green); }
         .fill-purple { background: var(--purple); }
         .fill-teal   { background: var(--teal); }
         .fill-blue   { background: var(--blue); }
@@ -439,6 +441,7 @@
             padding: 10px 14px; margin-bottom: 16px; line-height: 1.5;
         }
         .insight-callout em { font-style: normal; font-weight: 700; }
+        .insight-callout.green  em { color: var(--green); }
         .insight-callout.purple em { color: var(--purple); }
         .insight-callout.teal   em { color: var(--teal); }
         .insight-callout.blue   em { color: var(--blue); }
@@ -1872,6 +1875,12 @@ function renderMilestones() {
 function renderInsights() {
     const insights = [
         {
+            cls: "prapare", icon: "🏠", name: "PRAPARE — SDOH Screening",
+            avgNum: "2.13", avgMax: "/ 11", avgFillPct: (2.13/11*100).toFixed(1), fillCls: "fill-green",
+            calloutCls: "green",
+            callout: "<em>95.3%</em> of members who completed PRAPARE identified at least one social need"
+        },
+        {
             cls: "phq4", icon: "🧠", name: "PHQ-4 — Mental Health",
             avgNum: "1.75", avgMax: "/ 12", avgFillPct: (1.75/12*100).toFixed(1), fillCls: "fill-purple",
             calloutCls: "purple",
@@ -1938,7 +1947,7 @@ function renderInsights() {
                     ${r.isAvg ? `<span class="rubric-avg-tag">← Avg ${c.avgNum}</span>` : ''}
                 </div>
             `).join('')}
-            ` : `
+            ` : c.rows ? `
             <div class="insight-rows-lbl">${c.rowsLabel}</div>
             ${c.rows.map(r => `
                 <div class="insight-row">
@@ -1951,7 +1960,7 @@ function renderInsights() {
                     </div>
                 </div>
             `).join('')}
-            `}
+            ` : ''}
         </div>
     `).join('');
 }
