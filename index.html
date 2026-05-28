@@ -986,7 +986,7 @@
             <h1 style="font-family:'Roboto Slab',serif;font-size:36px;font-weight:300;color:var(--white);margin-bottom:12px;">Estimated Member Value <strong>Created</strong></h1>
             <p style="color:var(--gray-1);font-size:14px;max-width:760px;line-height:1.7;margin-bottom:32px;">Conservative, research-backed projections of downstream health system value generated through Pyx Health's member activation program. Estimates are based on 2,100 activated members (30% of 7,000 eligible). Actuals replace projections as Tableau data flows monthly.</p>
             <div class="client-q-box future" style="background:rgba(255,255,255,0.05);border-left-color:rgba(255,255,255,0.2);margin-bottom:0;">
-                <div class="client-q-label">Phase 4 · Months 6–9 — What Wellcare is wondering</div>
+                <div class="client-q-label">Phase 4 · Months 6–9 — What the data tells us</div>
                 <div class="client-q-text">"Is CAHPS/HOS actually moving — and can we demonstrate that we've meaningfully reduced Wellcare Indiana's disengaged member problem?"</div>
                 <div class="client-q-answer">CAHPS and HOS are lagging measures — scores reflect the full measurement year. The leading indicators (AWV completions, preventive screenings, barrier resolutions, UCLA-3 loneliness scores) appear first and build the case. Quality impact and value data populate here starting Month 6. A renewal conversation is targeted for mid-year based on the strength of those signals.</div>
             </div>
@@ -1776,7 +1776,7 @@ function renderJourney() {
                               phase.state === 'here'    ? `Phase ${n} · ${phase.name} · Active Now` :
                                                           `Phase ${n} · ${phase.name} · Upcoming`;
             qEl.innerHTML = `
-                <div class="client-q-label">${labelText} — What Wellcare ${phase.state === 'done' ? 'was' : 'is'} wondering</div>
+                <div class="client-q-label">${labelText} — What the data tells us</div>
                 <div class="client-q-text">"${phase.wondering}"</div>
                 <div class="client-q-answer">${phase.answer}</div>
             `;
