@@ -1736,7 +1736,7 @@ function renderKPIs() {
         {
             label: "Members with Completed Care Barrier Assessments",
             val:   M.careBarrierMembers,
-            ctx:   M.careBarrierAssessments ? `${M.careBarrierAssessments} total screenings completed` : "Activates post opt-in",
+            ctx:   M.careBarrierMembers && M.membersOptedIn ? `<span style="font-size:20px;font-weight:700;color:var(--green);">${(M.careBarrierMembers / M.membersOptedIn * 100).toFixed(1)}%</span> <span style="font-size:11px;color:#8a9baa;">of opted-in members<br>${(M.careBarrierAssessments || 0).toLocaleString()} total screenings</span>` : "Activates post opt-in",
             good:  false,
             color: "teal"
         },
