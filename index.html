@@ -1051,7 +1051,7 @@
         <div class="wrap">
             <div class="header-eyebrow">Net New Updates</div>
             <h1 class="updates-title">What's Changed Since <strong>Last Session</strong></h1>
-            <p class="updates-period">Previous update: <strong>April 30, 2026</strong> &nbsp;·&nbsp; Current: <strong id="upd-current-date"></strong> &nbsp;·&nbsp; Month <strong>2 of 9</strong></p>
+            <p class="updates-period">Previous update: <strong>May 28, 2026</strong> &nbsp;·&nbsp; Current: <strong id="upd-current-date"></strong> &nbsp;·&nbsp; Month <strong>3 of 9</strong></p>
         </div>
     </div>
 
@@ -1191,11 +1191,11 @@
 ============================================= */
 const D = {
     program: {
-        reportMonth:        "May 2026",
-        dataAsOf:           "May 28, 2026",
-        programMonth:       "2 of 9",
+        reportMonth:        "June 2026",
+        dataAsOf:           "June 11, 2026",
+        programMonth:       "3 of 9",
         projectPlanStart:   "March 13, 2026",
-        projectPlanEnd:     "December 31, 2026",
+        projectPlanEnd:     "December 31, 2027",
         sowTerm:            "February 1, 2026 – December 31, 2028",
         projectPlanId:      "20267001",
         goLiveDate:         "April 13, 2026",
@@ -1209,13 +1209,13 @@ const D = {
 
     metrics: {
         pushBoxesShipped:          6711,   // Wave 1 (4,141 · Apr 13) + Wave 2 (2,570 · Apr 20) — both complete
-        membersOptedIn:            1236,
-        careBarrierAssessments:    4779,   // total unique screening sessions as of May 28
-        careBarrierMembers:        1162,   // unique members with at least one screening
-        awvAttestations:           295,    // as of May 28, 2026
-        preventiveAttestations:    106,    // as of May 28, 2026
+        membersOptedIn:            1372,
+        careBarrierAssessments:    4779,   // total unique screening sessions as of May 28 — pending June update
+        careBarrierMembers:        1162,   // unique members with at least one screening — pending June update
+        awvAttestations:           295,    // pending June update
+        preventiveAttestations:    106,    // pending June update
         fluVaccineAttestations:    null,   // pull from Tableau
-        optInRate:                 0.1766, // 1,236 / 7,000 eligible
+        optInRate:                 0.196,  // 1,372 / 7,000 eligible
         sdohNeedPct:               0.953,  // 1,089 of 1,143 PRAPARE members had Score > 0
         avgSocialNeeds:            2.13,   // avg PRAPARE Total_Score across members
         phq4Avg:                   1.75,   // avg PHQ-4 Total_Score across members
@@ -1316,10 +1316,10 @@ const D = {
         {
             name: "Opt-In / Engagement Rate",
             target: 0.30,
-            actual: 0.1766, // 1,236 of 7,000 — end of Month 2
+            actual: 0.196,  // 1,372 of 7,000 — end of Month 3
             status: "ramping",
             showProgress: true,
-            desc: "1,236 members opted in as of May 13 — 58.9% of the 2,100 activation target. Program runs through December 31."
+            desc: "1,372 members opted in as of June 11 — 65.3% of the 2,100 activation target. Program runs through December 31, 2027."
         },
         {
             name: "Care Barrier Completion",
@@ -1439,7 +1439,7 @@ const D = {
             phase: "Opt-In & Engagement",
             status: "current",
             wellcareWondering: "Are disengaged members responding — and what barriers are standing between them and care?",
-            answer: "1,236 members have opted in as of May 13 — 17.7% of the 7,000 eligible population and 58.9% of the 2,100 activation target, through Month 2 of the program. Revenue to date is $41,630 across WelcomeEngagement and OngoingEngagement services. Care barrier assessment data (PRAPARE + PHQ-4 + UCLA-3) will populate in the June report as the outreach cycle matures. Target remains 30% engagement/utilization (2,100 members) over the program term."
+            answer: "1,372 members have opted in as of June 11 — 19.6% of the 7,000 eligible population and 65.3% of the 2,100 activation target, through Month 3 of the program. Engagement revenue to date is $102,595 (WelcomeEngagement: $41,160 · OngoingEngagement: $61,435); total program revenue including food boxes is $469,987.45. Target remains 30% engagement/utilization (2,100 members) over the program term."
         },
         {
             phase: "Milestone Completion",
@@ -1451,7 +1451,7 @@ const D = {
 
     revenue: {
         contractMax:        1288328,
-        revenueToDate:      41630,   // as of May 28, 2026
+        revenueToDate:      102595,  // engagement revenue as of June 11, 2026 (Welcome $41,160 + Ongoing $61,435)
         pushBoxRevenue:     null,    // $49 × boxes shipped
         engagementRevenue:  null,    // $55 × members × months + $30 activation
         platformFee:        50000
@@ -1478,9 +1478,9 @@ const D = {
         {
             type: "watch",
             label: "Watch",
-            title: "Opt-In Momentum — 58.9% to Activation Target",
-            desc: "1,236 members enrolled through Month 2 — 58.9% of the 2,100 activation target, exceeding the 800 monthly milestone target. Pace needs to hold through Q3 to hit full-year goal.",
-            action: "Monitor weekly enrollment cadence; pull updated Tableau data by June 1 for June report."
+            title: "Opt-In Momentum — 65.3% to Activation Target",
+            desc: "1,372 members enrolled through Month 3 — 65.3% of the 2,100 activation target. Still need 434 members to hit the 800/month milestone; pace needs to hold through Q3 to hit full-year goal.",
+            action: "Monitor weekly enrollment cadence; pull updated Tableau data by July 1 for July report."
         },
         {
             type: "risk",
@@ -1512,7 +1512,7 @@ const D = {
             timing: "April 2026 — Ongoing",
             state: "here",
             wondering: "Are historically disengaged members actually responding to outreach — and what care barriers are standing between them and care?",
-            answer: "1,236 members have opted in as of May 13 — 17.7% of the 7,000 eligible population and 58.9% of the 2,100 activation target through Month 2. Care barrier screening is now active: 1,162 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3), with 4,779 total screening sessions logged.",
+            answer: "1,372 members have opted in as of June 11 — 19.6% of the 7,000 eligible population and 65.3% of the 2,100 activation target through Month 3. Care barrier screening is active: 1,162 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3), with 4,779 total screening sessions logged. Updated screening counts pending June Tableau pull.",
             stats: [
                 { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of May 28, 2026",            color: "blue"   },
                 { label: "Member Enrollment Rate",    valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% · 2,100 members", color: "", progressTarget: 0.30 },
@@ -2247,16 +2247,16 @@ function renderIntFooter() {
 ============================================= */
 function renderUpdates() {
     const prev = {
-        membersOptedIn:       527,
-        optInRate:            0.0753,
-        optInPctOfTarget:     527 / D.program.activationTarget,
-        revenueToDate:        0,
-        careBarrierMembers:   0,
-        careBarrierAssessments: 0,
-        prapare:              0,
-        phq4:                 0,
-        ucla3:                0,
-        awvAttestations:      0
+        membersOptedIn:       1236,
+        optInRate:            0.1766,
+        optInPctOfTarget:     1236 / D.program.activationTarget,
+        revenueToDate:        41630,
+        careBarrierMembers:   1162,
+        careBarrierAssessments: 4779,
+        prapare:              1143,
+        phq4:                 1106,
+        ucla3:                1137,
+        awvAttestations:      295
     };
 
     function card(label, before, after, fmtType, color) {
@@ -2310,7 +2310,7 @@ function renderUpdates() {
 
     document.getElementById('upd-current-date').textContent = D.program.dataAsOf;
     document.getElementById('upd-footer-meta').textContent =
-        `Changes since April 30, 2026 · Pyx Health · ${D.program.reportMonth}`;
+        `Changes since May 28, 2026 · Pyx Health · ${D.program.reportMonth}`;
 }
 
 
