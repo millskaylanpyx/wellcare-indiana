@@ -1193,7 +1193,7 @@ const D = {
     program: {
         reportMonth:        "June 2026",
         dataAsOf:           "June 11, 2026",
-        programMonth:       "3 of 9",
+        programMonth:       "2 of 9",
         projectPlanStart:   "March 13, 2026",
         projectPlanEnd:     "December 31, 2026",
         sowTerm:            "February 1, 2026 – December 31, 2028",
@@ -1663,6 +1663,7 @@ function renderTimeline() {
             <div class="gantt-row-label${r.color === 'bar-gray' ? ' dim' : ''}">${r.label}</div>
             <div class="gantt-track">
                 <div class="gantt-bar ${r.color}" style="left:${r.left}%;width:${r.width}%">${r.text}</div>
+                <div style="position:absolute;top:0;left:${nowPct}%;width:1px;height:100%;background:rgba(46,68,86,0.25);z-index:2;pointer-events:none;"></div>
             </div>
         </div>
     `).join('');
