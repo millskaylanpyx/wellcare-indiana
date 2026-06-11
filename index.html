@@ -1527,7 +1527,7 @@ const D = {
             stats: [
                 { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of May 28, 2026",            color: "blue"   },
                 { label: "Member Enrollment Rate",    valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% · 2,100 members", color: "", progressTarget: 0.30 },
-                { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: "5,546 total screenings completed", color: "teal" }
+                { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: () => { const pct = D.metrics.careBarrierMembers && D.metrics.membersOptedIn ? (D.metrics.careBarrierMembers / D.metrics.membersOptedIn * 100).toFixed(1) + '% of opted-in members' : 'Pending'; return pct + ' · ' + (D.metrics.careBarrierAssessments || 0).toLocaleString() + ' total screenings'; }, color: "teal" }
             ]
         },
         {
@@ -1828,7 +1828,7 @@ function renderJourney() {
                 <div class="kpi ${s.color || ''}">
                     <div class="kpi-lbl">${s.label}</div>
                     <div class="kpi-val ${isPending ? 'pending' : ''}">${displayVal}</div>
-                    <div class="kpi-ctx">${s.ctx}</div>
+                    <div class="kpi-ctx">${typeof s.ctx === 'function' ? s.ctx() : s.ctx}</div>
                     ${progressHtml}
                 </div>
                 `;
