@@ -309,7 +309,8 @@
         .bar-green { background: var(--green); color: var(--white); }
         .bar-slate { background: linear-gradient(90deg, var(--cool-slate) 50%, rgba(46,68,86,0.12)); color: var(--white); }
         .bar-teal  { background: linear-gradient(90deg, var(--teal) 50%, rgba(41,164,162,0.12)); color: var(--white); }
-        .bar-gray  { background: var(--gray-1); color: #8a9baa; }
+        .bar-gray   { background: var(--gray-1); color: #8a9baa; }
+        .bar-purple { background: linear-gradient(90deg, var(--purple) 50%, rgba(85,66,167,0.12)); color: var(--white); }
 
         /* =============================================
            MILESTONE FUNNEL
@@ -1651,6 +1652,13 @@ function renderTimeline() {
             width:  ((9 - 2) / (TOTAL - 1) * 100).toFixed(1),
             color:  'bar-teal',
             text:   'Building →'
+        },
+        {
+            label:  'Activation & Behavior Change',
+            left:   ((4 - 1) / (TOTAL - 1) * 100).toFixed(1),
+            width:  ((9 - 4) / (TOTAL - 1) * 100).toFixed(1),
+            color:  'bar-purple',
+            text:   'Month 4 →'
         },
         {
             label:  'CAHPS & Outcomes',
