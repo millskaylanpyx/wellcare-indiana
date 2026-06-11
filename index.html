@@ -1210,8 +1210,8 @@ const D = {
     metrics: {
         pushBoxesShipped:          6711,   // Wave 1 (4,141 · Apr 13) + Wave 2 (2,570 · Apr 20) — both complete
         membersOptedIn:            1372,
-        careBarrierAssessments:    4779,   // total unique screening sessions as of May 28 — pending June update
-        careBarrierMembers:        1162,   // unique members with at least one screening — pending June update
+        careBarrierAssessments:    5546,   // total screening sessions as of June 8, 2026
+        careBarrierMembers:        1278,   // unique members with at least one screening as of June 8, 2026
         awvAttestations:           295,    // pending June update
         preventiveAttestations:    106,    // pending June update
         fluVaccineAttestations:    null,   // pull from Tableau
@@ -1278,28 +1278,28 @@ const D = {
         {
             icon: "🏠",
             name: "PRAPARE (SDOH)",
-            actual: 1143,
+            actual: 1266,
             avgNeeds: 2.13,
             desc: "Members screened for social determinants of health — food, housing, transportation, economic stability"
         },
         {
             icon: "🧠",
             name: "PHQ-4 (Mental Health)",
-            actual: 1106,
+            actual: 1584,
             avgScore: 1.75,
             desc: "4-question anxiety and depression screen administered at opt-in"
         },
         {
             icon: "🤝",
             name: "UCLA-3 (Loneliness)",
-            actual: 1137,
+            actual: 1627,
             avgScore: 4.07,
             desc: "3-item loneliness assessment — a key driver of CAHPS/HOS member experience and health perception scores"
         },
         {
             icon: "🏥",
             name: "Medicare Well-Being / HOS",
-            actual: 926,
+            actual: 1069,
             avgScore: 2.58,
             desc: "HOS-related assessment covering physical and mental health status and medication adherence — directly informs HOS baseline and year-over-year health improvement scoring"
         }
@@ -1324,9 +1324,9 @@ const D = {
         {
             name: "Care Barrier Completion",
             target: 0.80,
-            actual: 0.941,  // 1,162 unique members / 1,236 opted-in
+            actual: 0.931,  // 1,278 unique members / 1,372 opted-in
             status: "exceed",
-            desc: "1,162 unique members have completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) — 94.1% of opted-in members"
+            desc: "1,278 unique members have completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) — 93.1% of opted-in members"
         },
         {
             name: "AWV Attestation",
@@ -1512,7 +1512,7 @@ const D = {
             timing: "April 2026 — Ongoing",
             state: "here",
             wondering: "Are historically disengaged members actually responding to outreach — and what care barriers are standing between them and care?",
-            answer: "1,372 members have opted in as of June 11 — 19.6% of the 7,000 eligible population and 65.3% of the 2,100 activation target through Month 3. Care barrier screening is active: 1,162 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3), with 4,779 total screening sessions logged. Updated screening counts pending June Tableau pull.",
+            answer: "1,372 members have opted in as of June 11 — 19.6% of the 7,000 eligible population and 65.3% of the 2,100 activation target through Month 3. Care barrier screening is active: 1,278 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3), with 5,546 total screening sessions logged.",
             stats: [
                 { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of May 28, 2026",            color: "blue"   },
                 { label: "Member Enrollment Rate",    valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% · 2,100 members", color: "", progressTarget: 0.30 },
@@ -1908,7 +1908,7 @@ function renderInsights() {
             cls: "hos", icon: "🏥", name: "Medicare Well-Being / HOS",
             avgNum: "2.58", avgMax: "/ 10", avgFillPct: (2.58/10*100).toFixed(1), fillCls: "fill-blue",
             calloutCls: "blue",
-            callout: "<em>926 members</em> completed — avg score 2.58, indicating moderate health burden",
+            callout: "<em>1,069 members</em> completed — avg score 2.58, indicating moderate health burden",
             rowsLabel: "Top issues identified (% of HOS members)",
             rows: [
                 { label: "Physical activity not discussed with provider", pct: 60.5, fillCls: "fill-blue" },
