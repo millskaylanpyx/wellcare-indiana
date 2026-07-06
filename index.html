@@ -1062,7 +1062,7 @@
         <div class="wrap">
             <div class="header-eyebrow">Net New Updates</div>
             <h1 class="updates-title">What's Changed Since <strong>Last Session</strong></h1>
-            <p class="updates-period">Previous update: <strong>May 28, 2026</strong> &nbsp;·&nbsp; Current: <strong id="upd-current-date"></strong> &nbsp;·&nbsp; Month <strong>3 of 9</strong></p>
+            <p class="updates-period">Previous update: <strong>June 11, 2026</strong> &nbsp;·&nbsp; Current: <strong id="upd-current-date"></strong> &nbsp;·&nbsp; Month <strong>3 of 9</strong></p>
         </div>
     </div>
 
@@ -1202,9 +1202,9 @@
 ============================================= */
 const D = {
     program: {
-        reportMonth:        "June 2026",
-        dataAsOf:           "June 11, 2026",
-        programMonth:       "2 of 9",
+        reportMonth:        "July 2026",
+        dataAsOf:           "July 6, 2026",
+        programMonth:       "3 of 9",
         projectPlanStart:   "March 13, 2026",
         projectPlanEnd:     "December 31, 2026",
         sowTerm:            "February 1, 2026 – December 31, 2028",
@@ -1220,17 +1220,18 @@ const D = {
 
     metrics: {
         pushBoxesShipped:          6711,   // Wave 1 (4,141 · Apr 13) + Wave 2 (2,570 · Apr 20) — both complete
-        membersOptedIn:            1372,
-        careBarrierAssessments:    5546,   // total screening sessions as of June 8, 2026
-        careBarrierMembers:        1278,   // unique members with at least one screening as of June 8, 2026
-        awvAttestations:           295,    // pending June update
-        preventiveAttestations:    106,    // pending June update
+        membersOptedIn:            1751,   // total onboards as of July 6, 2026
+        careBarrierAssessments:    7762,   // total screening sessions as of July 6, 2026 (1,471 + 2,280 + 1,677 + 2,334)
+        careBarrierMembers:        1278,   // unique members with at least one screening — June 8, 2026 snapshot (July unique-member count pending refresh)
+        optInAtCareBarrier:        1372,   // opt-in count at the June 8 screening snapshot — denominator for care-barrier completion %
+        awvAttestations:           295,    // pending July update
+        preventiveAttestations:    106,    // pending July update
         fluVaccineAttestations:    null,   // pull from Tableau
-        optInRate:                 0.196,  // 1,372 / 7,000 eligible
-        sdohNeedPct:               0.953,  // 1,089 of 1,143 PRAPARE members had Score > 0
-        avgSocialNeeds:            2.13,   // avg PRAPARE Total_Score across members
-        phq4Avg:                   1.75,   // avg PHQ-4 Total_Score across members
-        ucla3Avg:                  4.07    // avg UCLA-3 Total_Score across members
+        optInRate:                 0.250,  // 1,751 / 7,000 eligible
+        sdohNeedPct:               0.90,   // 90% of screened members indicate an SDoH need (July 6 dashboard)
+        avgSocialNeeds:            2.0,    // avg SDOH needs per member (July 6 dashboard)
+        phq4Avg:                   1.7,    // avg PHQ-4 score (July 6 dashboard)
+        ucla3Avg:                  4.0     // avg UCLA-3 score (July 6 dashboard)
     },
 
     milestones: [
@@ -1289,28 +1290,28 @@ const D = {
         {
             icon: "🏠",
             name: "PRAPARE (SDOH)",
-            actual: 1266,
-            avgNeeds: 2.13,
+            actual: 1677,
+            avgNeeds: 2.0,
             desc: "Members screened for social determinants of health — food, housing, transportation, economic stability"
         },
         {
             icon: "🧠",
             name: "PHQ-4 (Mental Health)",
-            actual: 1584,
-            avgScore: 1.75,
+            actual: 2280,
+            avgScore: 1.7,
             desc: "4-question anxiety and depression screen administered at opt-in"
         },
         {
             icon: "🤝",
             name: "UCLA-3 (Loneliness)",
-            actual: 1627,
-            avgScore: 4.07,
+            actual: 2334,
+            avgScore: 4.0,
             desc: "3-item loneliness assessment — a key driver of CAHPS/HOS member experience and health perception scores"
         },
         {
             icon: "🏥",
             name: "Medicare Well-Being / HOS",
-            actual: 1069,
+            actual: 1471,
             avgScore: 2.58,
             desc: "HOS-related assessment covering physical and mental health status and medication adherence — directly informs HOS baseline and year-over-year health improvement scoring"
         }
@@ -1327,17 +1328,17 @@ const D = {
         {
             name: "Opt-In / Engagement Rate",
             target: 0.30,
-            actual: 0.196,  // 1,372 of 7,000 — end of Month 3
+            actual: 0.250,  // 1,751 of 7,000 — Month 3
             status: "ramping",
             showProgress: true,
-            desc: "1,372 members opted in as of June 11 — 65.3% of the 2,100 activation target. Program runs through December 31, 2027."
+            desc: "1,751 members opted in as of July 6 — 83.4% of the 2,100 activation target. Program runs through December 31, 2027."
         },
         {
             name: "Care Barrier Completion",
             target: 0.80,
-            actual: 0.931,  // 1,278 unique members / 1,372 opted-in
+            actual: 0.931,  // 1,278 unique members / 1,372 opted-in — June 8 screening snapshot
             status: "exceed",
-            desc: "1,278 unique members have completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) — 93.1% of opted-in members"
+            desc: "1,278 unique members had completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) as of the June 8 data pull — 93.1% of the 1,372 members opted in at that time. July unique-member count pending refresh."
         },
         {
             name: "AWV Attestation",
@@ -1450,7 +1451,7 @@ const D = {
             phase: "Opt-In & Engagement",
             status: "current",
             wellcareWondering: "Are disengaged members responding — and what barriers are standing between them and care?",
-            answer: "1,372 members have opted in as of June 11 — 19.6% of the 7,000 eligible population and 65.3% of the 2,100 activation target, through Month 3 of the program. Engagement revenue to date is $102,595 (WelcomeEngagement: $41,160 · OngoingEngagement: $61,435); total program revenue including food boxes is $469,987.45. Target remains 30% engagement/utilization (2,100 members) over the program term."
+            answer: "1,751 members have opted in as of July 6 — 25.0% of the 7,000 eligible population and 83.4% of the 2,100 activation target, through Month 3 of the program. Engagement revenue to date is $102,595 (WelcomeEngagement: $41,160 · OngoingEngagement: $61,435); total program revenue including food boxes is $469,987.45. Target remains 30% engagement/utilization (2,100 members) over the program term."
         },
         {
             phase: "Milestone Completion",
@@ -1489,8 +1490,8 @@ const D = {
         {
             type: "watch",
             label: "Watch",
-            title: "Opt-In Momentum — 65.3% to Activation Target",
-            desc: "1,372 members enrolled through Month 3 — 65.3% of the 2,100 activation target. Still need 434 members to hit the 800/month milestone; pace needs to hold through Q3 to hit full-year goal.",
+            title: "Opt-In Momentum — 83.4% to Activation Target",
+            desc: "1,751 members enrolled through Month 3 — 83.4% of the 2,100 activation target. Just 349 members from the activation goal; pace is strong heading into Q3.",
             action: "Monitor weekly enrollment cadence; pull updated Tableau data by July 1 for July report."
         },
         {
@@ -1523,11 +1524,11 @@ const D = {
             timing: "April 2026 — Ongoing",
             state: "here",
             wondering: "Are historically disengaged members actually responding to outreach — and what care barriers are standing between them and care?",
-            answer: "1,372 members have opted in as of June 11 — 19.6% of the 7,000 eligible population and 65.3% of the 2,100 activation target through Month 3. Care barrier screening is active: 1,278 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3), with 5,546 total screening sessions logged.",
+            answer: "1,751 members have opted in as of July 6 — 25.0% of the 7,000 eligible population and 83.4% of the 2,100 activation target through Month 3. Care barrier screening is active: 1,278 unique members had completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3) as of June 8, with 7,762 total screening sessions logged as of July 6.",
             stats: [
-                { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of May 28, 2026",            color: "blue"   },
+                { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of July 6, 2026",            color: "blue"   },
                 { label: "Member Enrollment Rate",    valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% · 2,100 members", color: "", progressTarget: 0.30 },
-                { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: () => { const pct = D.metrics.careBarrierMembers && D.metrics.membersOptedIn ? (D.metrics.careBarrierMembers / D.metrics.membersOptedIn * 100).toFixed(1) : null; return pct ? `<span style="font-size:20px;font-weight:700;color:var(--green);">${pct}%</span> <span style="font-size:11px;color:#8a9baa;">of opted-in members<br>${(D.metrics.careBarrierAssessments || 0).toLocaleString()} total screenings</span>` : 'Pending'; }, color: "teal" }
+                { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: () => { const denom = D.metrics.optInAtCareBarrier || D.metrics.membersOptedIn; const pct = D.metrics.careBarrierMembers && denom ? (D.metrics.careBarrierMembers / denom * 100).toFixed(1) : null; return pct ? `<span style="font-size:20px;font-weight:700;color:var(--green);">${pct}%</span> <span style="font-size:11px;color:#8a9baa;">of opted-in members (as of June 8)<br>${(D.metrics.careBarrierAssessments || 0).toLocaleString()} total screenings</span>` : 'Pending'; }, color: "teal" }
             ]
         },
         {
@@ -1736,7 +1737,7 @@ function renderKPIs() {
         {
             label: "Members with Completed Care Barrier Assessments",
             val:   M.careBarrierMembers,
-            ctx:   M.careBarrierMembers && M.membersOptedIn ? `<span style="font-size:20px;font-weight:700;color:var(--green);">${(M.careBarrierMembers / M.membersOptedIn * 100).toFixed(1)}%</span> <span style="font-size:11px;color:#8a9baa;">of opted-in members<br>${(M.careBarrierAssessments || 0).toLocaleString()} total screenings</span>` : "Activates post opt-in",
+            ctx:   M.careBarrierMembers && (M.optInAtCareBarrier || M.membersOptedIn) ? `<span style="font-size:20px;font-weight:700;color:var(--green);">${(M.careBarrierMembers / (M.optInAtCareBarrier || M.membersOptedIn) * 100).toFixed(1)}%</span> <span style="font-size:11px;color:#8a9baa;">of opted-in members (as of June 8)<br>${(M.careBarrierAssessments || 0).toLocaleString()} total screenings</span>` : "Activates post opt-in",
             good:  false,
             color: "teal"
         },
@@ -1869,7 +1870,7 @@ function renderMilestones() {
                 <div style="margin-top:8px;font-size:11px;color:#6b808f;line-height:1.6;">
                     <strong style="color:var(--cool-slate);">${D.metrics.membersOptedIn.toLocaleString()}</strong> members opted in
                     &nbsp;·&nbsp;
-                    <strong style="color:var(--cool-slate);">${D.metrics.careBarrierMembers.toLocaleString()}</strong> completed a care barrier assessment
+                    <strong style="color:var(--cool-slate);">${D.metrics.careBarrierMembers.toLocaleString()}</strong> completed a care barrier assessment (as of June 8)
                 </div>` : ''}
             </div>
             <div class="ms-progress">
@@ -1894,13 +1895,13 @@ function renderInsights() {
     const insights = [
         {
             cls: "prapare", icon: "🏠", name: "PRAPARE — SDOH Screening",
-            avgNum: "2.13", avgMax: "/ 11", avgFillPct: (2.13/11*100).toFixed(1), fillCls: "fill-green",
+            avgNum: "2.0", avgMax: "/ 11", avgFillPct: (2.0/11*100).toFixed(1), fillCls: "fill-green",
             calloutCls: "green",
-            callout: "<em>95.3%</em> of members who completed PRAPARE identified at least one social need"
+            callout: "<em>90%</em> of members who completed PRAPARE identified at least one social need"
         },
         {
             cls: "phq4", icon: "🧠", name: "PHQ-4 — Mental Health",
-            avgNum: "1.75", avgMax: "/ 12", avgFillPct: (1.75/12*100).toFixed(1), fillCls: "fill-purple",
+            avgNum: "1.7", avgMax: "/ 12", avgFillPct: (1.7/12*100).toFixed(1), fillCls: "fill-purple",
             calloutCls: "purple",
             callout: "<em>26.9%</em> of members scored ≥3 — mild anxiety or depression or higher",
             rubricLabel: "PHQ-4 Scoring Scale (0 – 12)",
@@ -1913,7 +1914,7 @@ function renderInsights() {
         },
         {
             cls: "ucla3", icon: "🤝", name: "UCLA-3 — Loneliness",
-            avgNum: "4.07", avgMax: "/ 9", avgFillPct: (4.07/9*100).toFixed(1), fillCls: "fill-teal",
+            avgNum: "4.0", avgMax: "/ 9", avgFillPct: (4.0/9*100).toFixed(1), fillCls: "fill-teal",
             calloutCls: "teal",
             callout: "<em>19.1%</em> of members scored ≥6 — moderate to high loneliness",
             rubricLabel: "UCLA-3 Scoring Scale (3 – 9)",
@@ -1926,7 +1927,7 @@ function renderInsights() {
             cls: "hos", icon: "🏥", name: "Medicare Well-Being / HOS",
             avgNum: "2.58", avgMax: "/ 10", avgFillPct: (2.58/10*100).toFixed(1), fillCls: "fill-blue",
             calloutCls: "blue",
-            callout: "<em>1,069 members</em> completed — avg score 2.58, indicating moderate health burden",
+            callout: "<em>1,471 members</em> completed — avg score 2.58, indicating moderate health burden",
             rowsLabel: "Top issues identified (% of HOS members)",
             rows: [
                 { label: "Physical activity not discussed with provider", pct: 60.5, fillCls: "fill-blue" },
@@ -2265,15 +2266,15 @@ function renderIntFooter() {
 ============================================= */
 function renderUpdates() {
     const prev = {
-        membersOptedIn:       1236,
-        optInRate:            0.1766,
-        optInPctOfTarget:     1236 / D.program.activationTarget,
-        revenueToDate:        41630,
-        careBarrierMembers:   1162,
-        careBarrierAssessments: 4779,
-        prapare:              1143,
-        phq4:                 1106,
-        ucla3:                1137,
+        membersOptedIn:       1372,
+        optInRate:            0.196,
+        optInPctOfTarget:     1372 / D.program.activationTarget,
+        revenueToDate:        102595,
+        careBarrierMembers:   1278,
+        careBarrierAssessments: 5546,
+        prapare:              1266,
+        phq4:                 1584,
+        ucla3:                1627,
         awvAttestations:      295
     };
 
@@ -2328,7 +2329,7 @@ function renderUpdates() {
 
     document.getElementById('upd-current-date').textContent = D.program.dataAsOf;
     document.getElementById('upd-footer-meta').textContent =
-        `Changes since May 28, 2026 · Pyx Health · ${D.program.reportMonth}`;
+        `Changes since June 11, 2026 · Pyx Health · ${D.program.reportMonth}`;
 }
 
 
