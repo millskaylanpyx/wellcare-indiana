@@ -1224,7 +1224,7 @@ const D = {
         careBarrierAssessments:    7762,   // total screening sessions as of July 6, 2026 (1,471 + 2,280 + 1,677 + 2,334)
         careBarrierMembers:        1647,   // unique members with at least one screening — as of July 1, 2026
         awvAttestations:           631,    // Box 3 AWV attestations as of July 6, 2026
-        preventiveAttestations:    106,    // pending July update
+        preventiveAttestations:    223,    // Box 4 preventive screening attestations as of July 6, 2026
         fluVaccineAttestations:    null,   // pull from Tableau
         optInRate:                 0.250,  // 1,751 / 7,000 eligible
         sdohNeedPct:               0.90,   // 90% of screened members indicate an SDoH need (July 6 dashboard)
@@ -1278,7 +1278,7 @@ const D = {
             desc: "Member attests to completing a PCP-recommended preventive screening: colorectal cancer, breast cancer, dental visit, or Hemoglobin A1c",
             trigger: "Preventive Care Attestation",
             target: 2100,
-            actual: 106,
+            actual: 223,
             status: "active"
         },
         {
