@@ -1450,7 +1450,7 @@ const D = {
             phase: "Opt-In & Engagement",
             status: "current",
             wellcareWondering: "Are disengaged members responding — and what barriers are standing between them and care?",
-            answer: "1,751 members have opted in as of July 6 — 25.0% of the 7,000 eligible population and 83.4% of the 2,100 activation target, through Month 3 of the program. Engagement revenue to date is $102,595 (WelcomeEngagement: $41,160 · OngoingEngagement: $61,435); total program revenue including food boxes is $469,987.45. Target remains 30% engagement/utilization (2,100 members) over the program term."
+            answer: "1,751 members have opted in as of July 6 — 25.0% of the 7,000 eligible population and 83.4% of the 2,100 activation target, through Month 3 of the program. Engagement revenue to date is $153,125; total program revenue including food boxes is $558,266 — 43.36% of the $1,288,328 contract ceiling. Target remains 30% engagement/utilization (2,100 members) over the program term."
         },
         {
             phase: "Milestone Completion",
@@ -1462,9 +1462,10 @@ const D = {
 
     revenue: {
         contractMax:        1288328,
-        revenueToDate:      102595,  // engagement revenue as of June 11, 2026 (Welcome $41,160 + Ongoing $61,435)
-        pushBoxRevenue:     null,    // $49 × boxes shipped
-        engagementRevenue:  null,    // $55 × members × months + $30 activation
+        engagementRevenue:  153125,  // Total engagement revenue as of July 6, 2026
+        foodBoxTotal:       405141,  // Food box total (box + 1.5% admin fee) as of July 6, 2026
+        revenueToDate:      558266,  // engagement + food box, as of July 6, 2026
+        revenueGoalPct:     0.4336,  // % to revenue goal (food + engagement) as of July 6, 2026
         platformFee:        50000
     },
 
@@ -2189,31 +2190,29 @@ function renderInternalHeader() {
 function renderRevenue() {
     const R = D.revenue;
     const toDate  = R.revenueToDate || 0;
-    const fillPct = Math.min(pct(toDate, R.contractMax) * 100, 100).toFixed(1);
+    const goalPct = R.revenueGoalPct != null ? R.revenueGoalPct * 100 : pct(toDate, R.contractMax) * 100;
     const mid     = '$' + Math.round(R.contractMax / 2).toLocaleString();
 
     document.getElementById('rev-grid').innerHTML = `
         <div class="rev-card">
-            <div class="rev-card-lbl">Contract Ceiling (NTE)</div>
-            <div class="rev-card-val">$1,288,328</div>
-            <div class="rev-card-sub">SOW #13 · Project Plan ID: ${D.program.projectPlanId}<br>9-month program · Auto-renews annually</div>
+            <div class="rev-card-lbl">Total Engagement Revenue</div>
+            <div class="rev-card-val">$${(R.engagementRevenue || 0).toLocaleString()}</div>
+            <div class="rev-card-sub">Welcome + ongoing engagement fees · as of ${D.program.dataAsOf}</div>
         </div>
         <div class="rev-card">
-            <div class="rev-card-lbl">Revenue To Date</div>
-            <div class="rev-card-val ${R.revenueToDate === null ? 'pending' : ''}">
-                ${R.revenueToDate !== null ? '$' + R.revenueToDate.toLocaleString() : 'Pending'}
-            </div>
-            <div class="rev-card-sub">Updates monthly as push boxes ship and members activate</div>
+            <div class="rev-card-lbl">Food Box Total (Box + Admin 1.5%)</div>
+            <div class="rev-card-val">$${(R.foodBoxTotal || 0).toLocaleString()}</div>
+            <div class="rev-card-sub">Push + milestone food boxes, incl. 1.5% admin fee</div>
         </div>
         <div class="rev-card">
-            <div class="rev-card-lbl">Platform Fee (Annual)</div>
-            <div class="rev-card-val">$50,000</div>
-            <div class="rev-card-sub">Flat annual fee · Invoiced per SOW #13 schedule</div>
+            <div class="rev-card-lbl">Total Revenue To Date</div>
+            <div class="rev-card-val">$${toDate.toLocaleString()}</div>
+            <div class="rev-card-sub">Engagement + food box · ${goalPct.toFixed(2)}% to revenue goal</div>
         </div>
     `;
 
-    document.getElementById('rev-pct-label').textContent = fillPct + '%';
-    document.getElementById('rev-fill-bar').style.width = fillPct + '%';
+    document.getElementById('rev-pct-label').textContent = goalPct.toFixed(2) + '%';
+    document.getElementById('rev-fill-bar').style.width = Math.min(goalPct, 100) + '%';
     document.getElementById('rev-track-mid').textContent = mid;
 }
 
