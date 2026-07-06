@@ -1222,8 +1222,7 @@ const D = {
         pushBoxesShipped:          6711,   // Wave 1 (4,141 · Apr 13) + Wave 2 (2,570 · Apr 20) — both complete
         membersOptedIn:            1751,   // total onboards as of July 6, 2026
         careBarrierAssessments:    7762,   // total screening sessions as of July 6, 2026 (1,471 + 2,280 + 1,677 + 2,334)
-        careBarrierMembers:        1278,   // unique members with at least one screening — June 8, 2026 snapshot (July unique-member count pending refresh)
-        optInAtCareBarrier:        1372,   // opt-in count at the June 8 screening snapshot — denominator for care-barrier completion %
+        careBarrierMembers:        1647,   // unique members with at least one screening — as of July 1, 2026
         awvAttestations:           631,    // Box 3 AWV attestations as of July 6, 2026
         preventiveAttestations:    106,    // pending July update
         fluVaccineAttestations:    null,   // pull from Tableau
@@ -1254,7 +1253,7 @@ const D = {
             desc: "Member opts into program and completes Care Barrier Assessment (PRAPARE + PHQ-4 + UCLA-3)",
             trigger: "Opt-In + Care Barrier Assessment",
             target: 2100,
-            actual: 1278,
+            actual: 1647,
             status: "active"
         },
         {
@@ -1336,9 +1335,9 @@ const D = {
         {
             name: "Care Barrier Completion",
             target: 0.80,
-            actual: 0.931,  // 1,278 unique members / 1,372 opted-in — June 8 screening snapshot
+            actual: 0.941,  // 1,647 unique members / 1,751 opted-in — as of July 1, 2026
             status: "exceed",
-            desc: "1,278 unique members had completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) as of the June 8 data pull — 93.1% of the 1,372 members opted in at that time. July unique-member count pending refresh."
+            desc: "1,647 unique members have completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) as of July 1 — 94.1% of opted-in members."
         },
         {
             name: "AWV Attestation",
@@ -1524,11 +1523,11 @@ const D = {
             timing: "April 2026 — Ongoing",
             state: "here",
             wondering: "Are historically disengaged members actually responding to outreach — and what care barriers are standing between them and care?",
-            answer: "1,751 members have opted in as of July 6 — 25.0% of the 7,000 eligible population and 83.4% of the 2,100 activation target through Month 3. Care barrier screening is active: 1,278 unique members had completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3) as of June 8, with 7,762 total screening sessions logged as of July 6.",
+            answer: "1,751 members have opted in as of July 6 — 25.0% of the 7,000 eligible population and 83.4% of the 2,100 activation target through Month 3. Care barrier screening is active: 1,647 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3) as of July 1, with 7,762 total screening sessions logged as of July 6.",
             stats: [
                 { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of July 6, 2026",            color: "blue"   },
                 { label: "Member Enrollment Rate",    valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% · 2,100 members", color: "", progressTarget: 0.30 },
-                { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: () => { const denom = D.metrics.optInAtCareBarrier || D.metrics.membersOptedIn; const pct = D.metrics.careBarrierMembers && denom ? (D.metrics.careBarrierMembers / denom * 100).toFixed(1) : null; return pct ? `<span style="font-size:20px;font-weight:700;color:var(--green);">${pct}%</span> <span style="font-size:11px;color:#8a9baa;">of opted-in members (as of June 8)<br>${(D.metrics.careBarrierAssessments || 0).toLocaleString()} total screenings</span>` : 'Pending'; }, color: "teal" }
+                { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: () => { const pct = D.metrics.careBarrierMembers && D.metrics.membersOptedIn ? (D.metrics.careBarrierMembers / D.metrics.membersOptedIn * 100).toFixed(1) : null; return pct ? `<span style="font-size:20px;font-weight:700;color:var(--green);">${pct}%</span> <span style="font-size:11px;color:#8a9baa;">of opted-in members (as of July 1)<br>${(D.metrics.careBarrierAssessments || 0).toLocaleString()} total screenings</span>` : 'Pending'; }, color: "teal" }
             ]
         },
         {
@@ -1737,7 +1736,7 @@ function renderKPIs() {
         {
             label: "Members with Completed Care Barrier Assessments",
             val:   M.careBarrierMembers,
-            ctx:   M.careBarrierMembers && (M.optInAtCareBarrier || M.membersOptedIn) ? `<span style="font-size:20px;font-weight:700;color:var(--green);">${(M.careBarrierMembers / (M.optInAtCareBarrier || M.membersOptedIn) * 100).toFixed(1)}%</span> <span style="font-size:11px;color:#8a9baa;">of opted-in members (as of June 8)<br>${(M.careBarrierAssessments || 0).toLocaleString()} total screenings</span>` : "Activates post opt-in",
+            ctx:   M.careBarrierMembers && M.membersOptedIn ? `<span style="font-size:20px;font-weight:700;color:var(--green);">${(M.careBarrierMembers / M.membersOptedIn * 100).toFixed(1)}%</span> <span style="font-size:11px;color:#8a9baa;">of opted-in members (as of July 1)<br>${(M.careBarrierAssessments || 0).toLocaleString()} total screenings</span>` : "Activates post opt-in",
             good:  false,
             color: "teal"
         },
@@ -1870,7 +1869,7 @@ function renderMilestones() {
                 <div style="margin-top:8px;font-size:11px;color:#6b808f;line-height:1.6;">
                     <strong style="color:var(--cool-slate);">${D.metrics.membersOptedIn.toLocaleString()}</strong> members opted in
                     &nbsp;·&nbsp;
-                    <strong style="color:var(--cool-slate);">${D.metrics.careBarrierMembers.toLocaleString()}</strong> completed a care barrier assessment (as of June 8)
+                    <strong style="color:var(--cool-slate);">${D.metrics.careBarrierMembers.toLocaleString()}</strong> completed a care barrier assessment (as of July 1)
                 </div>` : ''}
             </div>
             <div class="ms-progress">
