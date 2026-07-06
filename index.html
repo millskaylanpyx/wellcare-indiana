@@ -1297,7 +1297,7 @@ const D = {
             icon: "🏠",
             name: "PRAPARE (SDOH)",
             actual: 1677,
-            avgNeeds: 2.0,
+            avgNeeds: 2.1,
             desc: "Members screened for social determinants of health — food, housing, transportation, economic stability"
         },
         {
@@ -1318,7 +1318,7 @@ const D = {
             icon: "🏥",
             name: "Medicare Well-Being / HOS",
             actual: 1471,
-            avgScore: 2.58,
+            avgScore: 2.0,
             desc: "HOS-related assessment covering physical and mental health status and medication adherence — directly informs HOS baseline and year-over-year health improvement scoring"
         }
     ],
@@ -1902,46 +1902,46 @@ function renderInsights() {
     const insights = [
         {
             cls: "prapare", icon: "🏠", name: "PRAPARE — SDOH Screening",
-            avgNum: "2.0", avgMax: "/ 11", avgFillPct: (2.0/11*100).toFixed(1), fillCls: "fill-green",
+            avgNum: "2.1", avgMax: "/ 11", avgFillPct: (2.1/11*100).toFixed(1), fillCls: "fill-green",
             calloutCls: "green",
-            callout: "<em>90%</em> of members who completed PRAPARE identified at least one social need"
+            callout: "<em>95%</em> of members who completed PRAPARE identified at least one social need"
         },
         {
             cls: "phq4", icon: "🧠", name: "PHQ-4 — Mental Health",
             avgNum: "1.7", avgMax: "/ 12", avgFillPct: (1.7/12*100).toFixed(1), fillCls: "fill-purple",
             calloutCls: "purple",
-            callout: "<em>26.9%</em> of members scored ≥3 — mild anxiety or depression or higher",
+            callout: "<em>26.3%</em> of members scored ≥3 — mild anxiety or depression or higher",
             rubricLabel: "PHQ-4 Scoring Scale (0 – 12)",
             rubric: [
-                { range: "0 – 2",  level: "Normal",   dot: "#49a601", pct: "72.9%", isAvg: true  },
-                { range: "3 – 5",  level: "Mild",     dot: "#f0a500", pct: "16.8%", isAvg: false },
-                { range: "6 – 8",  level: "Moderate", dot: "#d6661a", pct: "6.7%",  isAvg: false },
-                { range: "9 – 12", level: "Severe",   dot: "#c0392b", pct: "3.5%",  isAvg: false }
+                { range: "0 – 2",  level: "Normal",   dot: "#49a601", pct: "73.7%", isAvg: true  },
+                { range: "3 – 5",  level: "Mild",     dot: "#f0a500", pct: "16.5%", isAvg: false },
+                { range: "6 – 8",  level: "Moderate", dot: "#d6661a", pct: "6.1%",  isAvg: false },
+                { range: "9 – 12", level: "Severe",   dot: "#c0392b", pct: "3.7%",  isAvg: false }
             ]
         },
         {
             cls: "ucla3", icon: "🤝", name: "UCLA-3 — Loneliness",
             avgNum: "4.0", avgMax: "/ 9", avgFillPct: (4.0/9*100).toFixed(1), fillCls: "fill-teal",
             calloutCls: "teal",
-            callout: "<em>19.1%</em> of members scored ≥6 — moderate to high loneliness",
+            callout: "<em>17.8%</em> of members scored ≥6 — moderate to high loneliness",
             rubricLabel: "UCLA-3 Scoring Scale (3 – 9)",
             rubric: [
-                { range: "3 – 5", level: "Not Lonely", dot: "#49a601", pct: "80.9%", isAvg: true  },
-                { range: "6 – 9", level: "Lonely",     dot: "#c0392b", pct: "19.1%", isAvg: false }
+                { range: "3 – 5", level: "Not Lonely", dot: "#49a601", pct: "82.2%", isAvg: true  },
+                { range: "6 – 9", level: "Lonely",     dot: "#c0392b", pct: "17.8%", isAvg: false }
             ]
         },
         {
             cls: "hos", icon: "🏥", name: "Medicare Well-Being / HOS",
-            avgNum: "2.58", avgMax: "/ 10", avgFillPct: (2.58/10*100).toFixed(1), fillCls: "fill-blue",
+            avgNum: "2.0", avgMax: "/ 10", avgFillPct: (2.0/10*100).toFixed(1), fillCls: "fill-blue",
             calloutCls: "blue",
-            callout: "<em>1,471 members</em> completed — avg score 2.58, indicating moderate health burden",
-            rowsLabel: "Top issues identified (% of HOS members)",
+            callout: "<em>1,416 assessments</em> completed — avg score 2.0 of 10; fall risk and physical-activity gaps are the most common issues",
+            rowsLabel: "Top issues identified (% of HOS assessments)",
             rows: [
-                { label: "Physical activity not discussed with provider", pct: 60.5, fillCls: "fill-blue" },
-                { label: "Fall risk / unsteadiness while walking",        pct: 42.4, fillCls: "fill-blue" },
-                { label: "Bladder / incontinence issues",                 pct: 34.3, fillCls: "fill-blue" },
-                { label: "Poor physical health days (last 30 days)",      pct: 21.9, fillCls: "fill-blue" },
-                { label: "Medication non-adherence",                      pct: 17.5, fillCls: "fill-blue" }
+                { label: "Physical activity not discussed with provider", pct: 39.8, fillCls: "fill-blue" },
+                { label: "Fall risk / unsteadiness while walking",        pct: 37.7, fillCls: "fill-blue" },
+                { label: "Bladder / incontinence issues",                 pct: 30.9, fillCls: "fill-blue" },
+                { label: "Poor physical health days (14+ of last 30)",    pct: 23.1, fillCls: "fill-blue" },
+                { label: "Medication non-adherence",                      pct: 15.5, fillCls: "fill-blue" }
             ]
         }
     ];
