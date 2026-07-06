@@ -1230,7 +1230,14 @@ const D = {
         sdohNeedPct:               0.90,   // 90% of screened members indicate an SDoH need (July 6 dashboard)
         avgSocialNeeds:            2.0,    // avg SDOH needs per member (July 6 dashboard)
         phq4Avg:                   1.7,    // avg PHQ-4 score (July 6 dashboard)
-        ucla3Avg:                  4.0     // avg UCLA-3 score (July 6 dashboard)
+        ucla3Avg:                  4.0,    // avg UCLA-3 score (July 6 dashboard)
+
+        // Engagement depth & barrier response — July 6, 2026 (Value View leading indicators)
+        membersEngaged:            1732,   // distinct members with >=1 care team call
+        engagementCalls:           33854,  // total engagement calls logged
+        avgCallsPerMember:         5.4,    // avg engagement calls per engaged member
+        urgentNeedPct:             0.88,   // % of screened members flagging >=1 urgent need (CSC callback <1 business day)
+        topBarriers:               [{ name: "Income", pct: 0.87 }, { name: "Food", pct: 0.67 }]
     },
 
     milestones: [
@@ -2040,37 +2047,60 @@ function renderValue() {
     const activated = D.metrics.membersOptedIn || 0;
 
     document.getElementById('val-grid').innerHTML = D.value.map((v, i) => {
+        const M = D.metrics;
         const estimated = v.valuePerMember && v.estimatePct
             ? Math.round(D.program.activationTarget * v.estimatePct * v.valuePerMember)
             : null;
-
-        // Card 0 — AWV: show value activated to date from real attestations
-        const activatedHtml = (i === 0 && D.metrics.awvAttestations && v.valuePerMember)
-            ? `<div class="val-activated">$${(D.metrics.awvAttestations * v.valuePerMember).toLocaleString()} activated to date · ${D.metrics.awvAttestations} completions</div>`
-            : '';
-
-        // Card 2 — CAHPS/HOS: flip from "Building" to leading indicators
         const isCahps = i === 2;
+        let actualsHtml = '';
+
+        // Card 0 — AWV + Preventive Cascade: real value activated from attestations
+        if (i === 0 && M.awvAttestations && v.valuePerMember) {
+            actualsHtml = `
+                <div class="val-leading-badge">Actuals · as of ${D.program.dataAsOf}</div>
+                <div class="val-activated">$${(M.awvAttestations * v.valuePerMember).toLocaleString()} activated to date · ${M.awvAttestations} AWVs completed</div>
+                <div class="val-leading">
+                    <strong>${M.awvAttestations}</strong> Annual Wellness Visits completed${M.preventiveAttestations ? ` and <strong>${M.preventiveAttestations}</strong> preventive screenings attested` : ''} — the cascade is in motion. Each AWV opens the door to colorectal, breast-cancer, dental, and A1c screening plus the annual flu vaccine: the HEDIS measures that anchor Star Ratings.
+                </div>`;
+        }
+
+        // Card 1 — Care Barrier Resolved: real discovery + urgent-response proof
+        if (i === 1 && M.careBarrierMembers) {
+            const topBarriers = (M.topBarriers || []).map(b => `${b.name} ${Math.round(b.pct * 100)}%`).join(' · ');
+            actualsHtml = `
+                <div class="val-leading-badge">Actuals · as of July 1</div>
+                <div class="val-activated">${M.careBarrierMembers.toLocaleString()} members assessed · ${Math.round(M.sdohNeedPct * 100)}% surfaced a barrier · avg ${M.avgSocialNeeds.toFixed(1)} needs/member</div>
+                <div class="val-leading">
+                    <strong>${Math.round(M.urgentNeedPct * 100)}%</strong> of screened members flagged an <strong>urgent</strong> need — each triggers a Compassionate Support Center outbound call within <strong>1 business day</strong>, closing the loop before a barrier blocks care.${topBarriers ? ` Top barriers surfaced: <strong>${topBarriers}</strong> — the specific, actionable drivers of disengagement.` : ''}
+                </div>`;
+        }
+
+        // Card 2 — CAHPS/HOS: engagement depth + whole-person baselines (leading indicators)
+        if (isCahps) {
+            actualsHtml = `
+                <div class="val-leading-badge">Leading Indicators Active</div>
+                <div class="val-leading">
+                    <strong>${(M.membersEngaged || 0).toLocaleString()}</strong> members in an active care relationship &nbsp;·&nbsp;
+                    <strong>${(M.engagementCalls || 0).toLocaleString()}</strong> engagement calls &nbsp;·&nbsp;
+                    <strong>${M.avgCallsPerMember}</strong> avg calls per member — relationship density is the strongest available leading indicator of CAHPS experience movement.<br><br>
+                    <strong>${D.screenings[2].actual ?? '—'}</strong> UCLA-3 loneliness and <strong>${D.screenings[1].actual ?? '—'}</strong> PHQ-4 mental-health baselines established. CAHPS/HOS are lagging measures — early enrollment maximizes the longitudinal window, with 7 months remaining to build the record scoring demands.
+                </div>`;
+        }
+
         const amountDisplay = estimated
             ? '$' + estimated.toLocaleString()
             : isCahps ? 'Leading Indicators Active' : 'Building';
-        const leadingHtml = isCahps ? `
-            <div class="val-leading-badge">Baseline Established</div>
-            <div class="val-leading">
-                <strong>${D.screenings[2].actual ?? '—'}</strong> UCLA-3 loneliness baselines established &nbsp;·&nbsp;
-                <strong>${D.screenings[1].actual ?? '—'}</strong> PHQ-4 mental health screens complete &nbsp;·&nbsp;
-                CAHPS/HOS longitudinal tracking begins here. Early enrollment maximizes the data
-                collection window — <strong>${D.metrics.membersOptedIn.toLocaleString()} members</strong> already
-                engaged, with 7 months remaining to build the longitudinal record CAHPS/HOS scoring demands.
-            </div>` : '';
+        const amountNote = estimated
+            ? `<div style="font-size:11px;color:rgba(255,255,255,0.45);font-style:italic;margin:-4px 0 12px;">Projected at full activation · ${D.program.activationTarget.toLocaleString()} members</div>`
+            : '';
 
         return `
         <div class="val-card">
             <div class="val-icon">${v.icon}</div>
             <div class="val-lbl">${v.label}</div>
             <div class="val-amount">${amountDisplay}</div>
-            ${activatedHtml}
-            ${leadingHtml}
+            ${amountNote}
+            ${actualsHtml}
             <div class="val-desc">${v.desc}</div>
             <div class="val-source">${v.source}</div>
         </div>
