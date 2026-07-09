@@ -1409,7 +1409,7 @@ const D = {
             statement: "Re-engage ~7,000 historically disengaged Medicare members",
             pyxHow: "Push box creates a tangible, physical touchpoint that breaks through to members who haven't responded to traditional outreach — early engagement lift is the foundation for everything else",
             action: "Two-wave push box launch (Wave 1: 4,141 on Apr 13 · Wave 2: 2,570 on Apr 20) followed by omni-channel outreach (telephone, SMS, email) and dedicated CSC support.",
-            metric: "1,751 members re-engaged · 25% of 7,000 eligible · 1,732 in an active care relationship · 2,085 engagement calls",
+            metric: "1,751 members re-engaged · 25% of 7,000 eligible · 1,732 in an active care relationship",
             metricPending: false
         },
         {
@@ -2090,7 +2090,6 @@ function renderValue() {
                 <div class="val-leading-badge">Leading Indicators Active</div>
                 <div class="val-leading">
                     <strong>${(M.membersEngaged || 0).toLocaleString()}</strong> members in an active care relationship &nbsp;·&nbsp;
-                    <strong>${(M.engagementCalls || 0).toLocaleString()}</strong> engagement calls &nbsp;·&nbsp;
                     <strong>${M.avgCallsPerMember}</strong> avg calls per member — relationship density is the strongest available leading indicator of CAHPS experience movement.<br><br>
                     <strong>${D.screenings[2].actual ?? '—'}</strong> UCLA-3 loneliness and <strong>${D.screenings[1].actual ?? '—'}</strong> PHQ-4 mental-health baselines established. CAHPS/HOS are lagging measures — early enrollment maximizes the longitudinal window, with 7 months remaining to build the record scoring demands.
                 </div>`;
