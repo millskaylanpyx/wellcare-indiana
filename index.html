@@ -1297,7 +1297,7 @@ const D = {
             icon: "🏠",
             name: "PRAPARE (SDOH)",
             actual: 1677,
-            avgNeeds: 2.1,
+            avgNeeds: 2.0,
             desc: "Members screened for social determinants of health — food, housing, transportation, economic stability"
         },
         {
@@ -1902,9 +1902,18 @@ function renderInsights() {
     const insights = [
         {
             cls: "prapare", icon: "🏠", name: "PRAPARE — SDOH Screening",
-            avgNum: "2.1", avgMax: "/ 11", avgFillPct: (2.1/11*100).toFixed(1), fillCls: "fill-green",
+            avgNum: "2.0", avgMax: "/ 11", avgFillPct: (2.0/11*100).toFixed(1), fillCls: "fill-green",
             calloutCls: "green",
-            callout: "<em>95%</em> of members who completed PRAPARE identified at least one social need"
+            callout: "<em>90%</em> of members who completed PRAPARE identified at least one social need",
+            rowsLabel: "Top SDOH needs identified (% of screened members)",
+            rows: [
+                { label: "Income",               pct: 87, fillCls: "fill-green" },
+                { label: "Food",                 pct: 67, fillCls: "fill-green" },
+                { label: "Healthy Days",         pct: 37, fillCls: "fill-green" },
+                { label: "Access to Care",       pct: 14, fillCls: "fill-green" },
+                { label: "Medication Adherence", pct: 13, fillCls: "fill-green" },
+                { label: "Economic Stability",   pct: 12, fillCls: "fill-green" }
+            ]
         },
         {
             cls: "phq4", icon: "🧠", name: "PHQ-4 — Mental Health",
