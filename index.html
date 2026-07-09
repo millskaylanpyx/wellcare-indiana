@@ -1220,20 +1220,20 @@ const D = {
 
     metrics: {
         pushBoxesShipped:          6711,   // Wave 1 (4,141 · Apr 13) + Wave 2 (2,570 · Apr 20) — both complete
-        membersOptedIn:            1751,   // total onboards as of July 6, 2026
+        membersOptedIn:            1779,   // total onboards as of July 9, 2026
         careBarrierAssessments:    7762,   // total screening sessions as of July 6, 2026 (1,471 + 2,280 + 1,677 + 2,334)
         careBarrierMembers:        1647,   // unique members with at least one screening — as of July 1, 2026
         awvAttestations:           631,    // Box 3 AWV attestations as of July 6, 2026
         preventiveAttestations:    223,    // Box 4 preventive screening attestations as of July 6, 2026
         fluVaccineAttestations:    null,   // pull from Tableau
-        optInRate:                 0.250,  // 1,751 / 7,000 eligible
+        optInRate:                 0.254,  // 1,779 / 7,000 eligible
         sdohNeedPct:               0.90,   // 90% of screened members indicate an SDoH need (July 6 dashboard)
         avgSocialNeeds:            2.0,    // avg SDOH needs per member (July 6 dashboard)
         phq4Avg:                   1.7,    // avg PHQ-4 score (July 6 dashboard)
         ucla3Avg:                  4.0,    // avg UCLA-3 score (July 6 dashboard)
 
         // Engagement depth & barrier response — July 6, 2026 (Value View leading indicators)
-        membersEngaged:            1732,   // distinct members with >=1 care team call
+        membersEngaged:            1766,   // distinct members in an active care relationship (as of July 9, 2026)
         engagementCalls:           2085,   // total engagement calls logged (as of July 6, 2026)
         avgCallsPerMember:         5.4,    // avg engagement calls per engaged member
         urgentNeedPct:             0.88,   // % of screened members flagging >=1 urgent need (CSC callback <1 business day)
@@ -1334,17 +1334,17 @@ const D = {
         {
             name: "Opt-In / Engagement Rate",
             target: 0.30,
-            actual: 0.250,  // 1,751 of 7,000 — Month 3
+            actual: 0.254,  // 1,779 of 7,000 — Month 3
             status: "ramping",
             showProgress: true,
-            desc: "1,751 members opted in as of July 6 — 83.4% of the 2,100 activation target. Program runs through December 31, 2027."
+            desc: "1,779 members opted in as of July 9 — 84.7% of the 2,100 activation target. Program runs through December 31, 2027."
         },
         {
             name: "Care Barrier Completion",
             target: 0.80,
-            actual: 0.941,  // 1,647 unique members / 1,751 opted-in — as of July 1, 2026
+            actual: 0.926,  // 1,647 unique members (July 1) / 1,779 opted-in (July 9)
             status: "exceed",
-            desc: "1,647 unique members have completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) as of July 1 — 94.1% of opted-in members."
+            desc: "1,647 unique members have completed at least one screening (PRAPARE, PHQ-4, or UCLA-3) as of July 1 — 92.6% of the 1,779 members opted in as of July 9."
         },
         {
             name: "AWV Attestation",
@@ -1409,7 +1409,7 @@ const D = {
             statement: "Re-engage ~7,000 historically disengaged Medicare members",
             pyxHow: "Push box creates a tangible, physical touchpoint that breaks through to members who haven't responded to traditional outreach — early engagement lift is the foundation for everything else",
             action: "Two-wave push box launch (Wave 1: 4,141 on Apr 13 · Wave 2: 2,570 on Apr 20) followed by omni-channel outreach (telephone, SMS, email) and dedicated CSC support.",
-            metric: "1,751 members re-engaged · 25% of 7,000 eligible · 1,732 in an active care relationship",
+            metric: "1,779 members re-engaged · 25% of 7,000 eligible · 1,766 in an active care relationship",
             metricPending: false
         },
         {
@@ -1457,7 +1457,7 @@ const D = {
             phase: "Opt-In & Engagement",
             status: "current",
             wellcareWondering: "Are disengaged members responding — and what barriers are standing between them and care?",
-            answer: "1,751 members have opted in as of July 6 — 25.0% of the 7,000 eligible population and 83.4% of the 2,100 activation target, through Month 3 of the program. Engagement revenue to date is $153,125; total program revenue including food boxes is $558,266 — 43.36% of the $1,288,328 contract ceiling. Target remains 30% engagement/utilization (2,100 members) over the program term."
+            answer: "1,779 members have opted in as of July 9 — 25.4% of the 7,000 eligible population and 84.7% of the 2,100 activation target, through Month 3 of the program. Engagement revenue to date is $153,125; total program revenue including food boxes is $558,266 — 43.36% of the $1,288,328 contract ceiling. Target remains 30% engagement/utilization (2,100 members) over the program term."
         },
         {
             phase: "Milestone Completion",
@@ -1497,8 +1497,8 @@ const D = {
         {
             type: "watch",
             label: "Watch",
-            title: "Opt-In Momentum — 83.4% to Activation Target",
-            desc: "1,751 members enrolled through Month 3 — 83.4% of the 2,100 activation target. Just 349 members from the activation goal; pace is strong heading into Q3.",
+            title: "Opt-In Momentum — 84.7% to Activation Target",
+            desc: "1,779 members enrolled through Month 3 — 84.7% of the 2,100 activation target. Just 321 members from the activation goal; pace is strong heading into Q3.",
             action: "Monitor weekly enrollment cadence; pull updated Tableau data by July 1 for July report."
         },
         {
@@ -1531,9 +1531,9 @@ const D = {
             timing: "April 2026 — Ongoing",
             state: "here",
             wondering: "Are historically disengaged members actually responding to outreach — and what care barriers are standing between them and care?",
-            answer: "1,751 members have opted in as of July 6 — 25.0% of the 7,000 eligible population and 83.4% of the 2,100 activation target through Month 3. Care barrier screening is active: 1,647 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3) as of July 1, with 7,762 total screening sessions logged as of July 6.",
+            answer: "1,779 members have opted in as of July 9 — 25.4% of the 7,000 eligible population and 84.7% of the 2,100 activation target through Month 3. Care barrier screening is active: 1,647 unique members have completed at least one assessment (PRAPARE, PHQ-4, or UCLA-3) as of July 1, with 7,762 total screening sessions logged as of July 6.",
             stats: [
-                { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of July 6, 2026",            color: "blue"   },
+                { label: "Members Opted In",         valKey: "membersOptedIn",          fallback: "Pending", ctx: "As of July 9, 2026",            color: "blue"   },
                 { label: "Member Enrollment Rate",    valKey: "optInRate", fmt: "%",     fallback: "Pending", ctx: "Target: 30% · 2,100 members", color: "", progressTarget: 0.30 },
                 { label: "Members with Completed Care Barrier Assessments", valKey: "careBarrierMembers", fallback: "Pending", ctx: () => { const pct = D.metrics.careBarrierMembers && D.metrics.membersOptedIn ? (D.metrics.careBarrierMembers / D.metrics.membersOptedIn * 100).toFixed(1) : null; return pct ? `<span style="font-size:20px;font-weight:700;color:var(--green);">${pct}%</span> <span style="font-size:11px;color:#8a9baa;">of opted-in members (as of July 1)<br>${(D.metrics.careBarrierAssessments || 0).toLocaleString()} total screenings</span>` : 'Pending'; }, color: "teal" }
             ]
