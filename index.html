@@ -1663,10 +1663,10 @@ function renderTimeline() {
         },
         {
             label:  'Activation & Behavior Change',
-            left:   ((4 - 1) / (TOTAL - 1) * 100).toFixed(1),
-            width:  ((9 - 4) / (TOTAL - 1) * 100).toFixed(1),
+            left:   nowPct,                                   // begins now — a bit after Month 3
+            width:  (100 - parseFloat(nowPct)).toFixed(1),
             color:  'bar-purple',
-            text:   'Month 4 →'
+            text:   'Building →'
         },
         {
             label:  'CAHPS & Outcomes',
