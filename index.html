@@ -1935,7 +1935,7 @@ function renderKPIs(opts = {}) {
     let shownCards = cards;
     if (care) {
         shownCards = cards.filter(c => c.label !== 'Push Boxes Shipped');
-        shownCards.forEach(c => { if (typeof c.ctx === 'string') c.ctx = c.ctx.replace(/Milestone Box \d+ trigger/, 'Care Access milestone'); });
+        shownCards.forEach(c => { if (typeof c.ctx === 'string') c.ctx = c.ctx.replace(/Milestone Box \d+ trigger/, 'Care Access'); });
     }
 
     document.getElementById(gridId).innerHTML = shownCards.map(c => `
