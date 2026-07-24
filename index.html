@@ -842,7 +842,8 @@
 ============================================= -->
 <nav class="tab-nav">
     <div class="nav-logo">pyx <span>health</span></div>
-    <button class="tab-btn active" onclick="switchTab('client',this)">Client View</button>
+    <button class="tab-btn active" onclick="switchTab('care',this)">Client View - Care &amp; Engagement</button>
+    <button class="tab-btn" onclick="switchTab('client',this)">Client View</button>
     <button class="tab-btn" onclick="switchTab('value',this)">Value View 💰</button>
     <button class="tab-btn" onclick="switchTab('updates',this)">Net New Updates 🆕</button>
     <button class="tab-btn" onclick="switchTab('internal',this)">Internal View ⚙</button>
@@ -852,7 +853,136 @@
 <!-- =============================================
      CLIENT VIEW
 ============================================= -->
-<div id="tab-client" class="tab-content active">
+<div id="tab-care" class="tab-content active">
+
+    <!-- Header -->
+    <div class="client-header">
+        <div class="header-eyebrow">Monthly Progress Report</div>
+        <h1>Wellcare Indiana <strong>CAHPS &amp; Preventive Care</strong></h1>
+        <p class="header-period" id="client-period-ce"></p>
+        <div class="market-pills">
+            <span class="mpill active">Indiana — Medicare</span>
+            <span class="mpill">SOW #13</span>
+            <span class="mpill">Program Month <span id="prog-month-pill-ce"></span></span>
+        </div>
+    </div>
+
+    <!-- Program at a Glance -->
+    <div class="white-bg">
+        <div class="wrap"><div class="section">
+            <div class="section-head">
+                <span class="section-eyebrow eyebrow-1">Program at a Glance</span>
+                <div class="section-title">Early Indicators</div>
+                <div class="section-sub">Key performance indicators for the Wellcare IN CAHPS &amp; Preventive Care Program — targeting 7,000 historically disengaged Medicare members in Indiana. Updated monthly from Pyx Tableau reporting.</div>
+            </div>
+            <div class="kpi-grid" id="kpi-grid-ce"></div>
+        </div></div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-bar">
+        <div class="wrap">
+            <div class="tl-label" id="tl-label-ce"></div>
+            <div class="gantt-wrap" id="tl-track-ce"></div>
+        </div>
+    </div>
+
+    <!-- Phase 1: Launch & Outreach -->
+    <div class="white-bg">
+        <div class="wrap"><div class="section">
+            <div class="section-head">
+                <span class="section-eyebrow eyebrow-1">Phase 1 · Complete ✓</span>
+                <div class="section-title">Launch &amp; Outreach</div>
+                <div class="section-sub">March 13 – April 20, 2026 · Implementation complete. Pyx reached 6,711 members across the initial launch and stood up omni-channel outreach — phone, SMS, email, and a toll-free Compassionate Support Center line — creating the first touchpoints with a historically disengaged population and meeting Wellcare's mandate for a fast April launch.</div>
+            </div>
+            <div class="client-q-box" id="journey-q-1-ce" style="margin-bottom:28px;"></div>
+            <div class="kpi-grid" id="journey-cards-1-ce" style="margin-bottom:28px;"></div>
+            <div style="background:linear-gradient(135deg,#f0fae6,#e6f5d8);border:1px solid rgba(73,166,1,0.25);border-left:5px solid var(--green);border-radius:12px;padding:22px 28px;display:flex;align-items:center;gap:20px;">
+                <div style="font-size:36px;line-height:1;">🏆</div>
+                <div>
+                    <div style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--green);margin-bottom:5px;">Pyx Health Record</div>
+                    <div style="font-family:'Roboto Slab',serif;font-size:17px;font-weight:600;color:var(--cool-slate);margin-bottom:5px;">Fastest Implementation in Pyx History — 16 Business Days</div>
+                    <div style="font-size:13px;color:#5a6a7a;line-height:1.6;">From SOW signature to member outreach launched in just 16 business days. This achievement reflects the exceptional collaboration and responsiveness of the Wellcare Indiana team — and sets the foundation for an equally fast path to member engagement and outcomes.</div>
+                </div>
+            </div>
+        </div></div>
+    </div>
+
+    <!-- Phase 2: Reach & Response -->
+    <div class="alt-bg">
+        <div class="wrap"><div class="section">
+            <div class="section-head">
+                <span class="section-eyebrow eyebrow-2">Phase 2 · Active Now · Month 3 ▶</span>
+                <div class="section-title">Reach &amp; Response</div>
+                <div class="section-sub">April 2026 — Ongoing · Outreach is live across phone, SMS, email, and the Pyx app. Opt-ins are climbing. Care barrier assessments (PRAPARE, PHQ-4, UCLA-3) activate with each opt-in to surface what's standing between these members and care.</div>
+            </div>
+            <div class="client-q-box" id="journey-q-2-ce" style="margin-bottom:28px;"></div>
+            <div class="kpi-grid" id="journey-cards-2-ce" style="margin-bottom:0;"></div>
+        </div></div>
+    </div>
+
+    <!-- Phase 3: Deep Engagement & Barrier Visibility -->
+    <div class="white-bg">
+        <div class="wrap"><div class="section">
+            <div class="section-head">
+                <span class="section-eyebrow eyebrow-3">Phase 3 · Months 3–6</span>
+                <div class="section-title">Deep Engagement &amp; Barrier Visibility</div>
+                <div class="section-sub">Summer 2026 · Screening data surfaces the social, mental health, and behavioral barriers standing between members and care — giving Pyx and Wellcare a real-time view of population needs before they prevent care completion.</div>
+            </div>
+            <div class="client-q-box future" id="journey-q-3-ce" style="margin-bottom:28px;"></div>
+            <div class="section-head" style="margin-bottom:20px;">
+                <span class="section-eyebrow eyebrow-3">Screenings &amp; Assessments</span>
+                <div class="section-title" style="font-size:20px;">Care Barrier &amp; Social Needs Data</div>
+                <div class="section-sub">PRAPARE, PHQ-4, and UCLA-3 administered at opt-in — surfacing barriers before they prevent care completion.</div>
+            </div>
+            <div class="screening-grid" id="screening-grid-ce"></div>
+            <div class="section-head" style="margin-top:40px;margin-bottom:20px;">
+                <span class="section-eyebrow eyebrow-3">Assessment Insights</span>
+                <div class="section-title" style="font-size:18px;">What the Screenings Are Telling Us</div>
+                <div class="section-sub">Key findings from PRAPARE, PHQ-4, UCLA-3, and Medicare Well-Being — the specific barriers standing between these members and care.</div>
+            </div>
+            <div class="insight-grid" id="insight-grid-ce"></div>
+        </div></div>
+    </div>
+
+    <!-- Phase 4: Activation & Behavior Change -->
+    <div class="alt-bg">
+        <div class="wrap"><div class="section">
+            <div class="section-head">
+                <span class="section-eyebrow eyebrow-4">Activation &amp; Behavior Change</span>
+                <div class="section-title">Activation &amp; Behavior Change</div>
+                <div class="section-sub">Opted-in members move through the care sequence — AWV scheduling, preventive screenings, and flu vaccine attestation. Each completed milestone reinforces healthy behavior and keeps members engaged through the Pyx app and care team.</div>
+            </div>
+            <div class="kpi-grid" id="journey-cards-3-ce" style="margin-bottom:40px;"></div>
+            <div class="section-head" style="margin-bottom:20px;">
+                <span class="section-eyebrow eyebrow-3">Care Milestone Tracking</span>
+                <div class="section-title" style="font-size:20px;">Care Access Milestone Progress</div>
+                <div class="section-sub">Up to 5 care milestones per member — the sequence driving AWV completion, preventive care, and CAHPS/HOS movement.</div>
+            </div>
+            <div class="milestone-funnel" id="milestone-funnel-ce"></div>
+        </div></div>
+    </div>
+
+    <!-- Goals Alignment -->
+    <div class="goals-section">
+        <div class="wrap">
+            <span class="section-eyebrow" style="background:rgba(255,255,255,0.08);color:var(--gray-1)">Goals Alignment</span>
+            <div class="section-title">Wellcare's Goals → Pyx Activation</div>
+            <div class="section-sub">How each of Wellcare Indiana's five program goals maps to Pyx Health's direct activity and the metric that will prove impact. Re-engaging disengaged members is Goal #1 — everything else flows from it.</div>
+            <div class="goals-grid" id="goals-grid-ce"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-logo">pyx <span>health</span></div>
+        <div id="footer-meta-ce"></div>
+    </div>
+
+</div><!-- /tab-care -->
+
+
+<div id="tab-client" class="tab-content">
 
     <!-- Header -->
     <div class="client-header">
@@ -1244,7 +1374,9 @@ const D = {
         {
             box: 1,
             label: "Initial Push Box",
+            careLabel: "Program Welcome & Outreach",
             desc: "Produce box sent to all eligible members across two waves to introduce the program and encourage opt-in",
+            careDesc: "Program introduced to all eligible members across two launch waves — driving opt-in, app onboarding, and the first connection to the Pyx care team.",
             trigger: "Wave 1: April 13 (4,141 members)  ·  Wave 2: April 20 (2,570 members)",
             target: 6711,
             actual: 6711,
@@ -1408,7 +1540,9 @@ const D = {
             clientGoal: "Goal #1",
             statement: "Re-engage ~7,000 historically disengaged Medicare members",
             pyxHow: "Push box creates a tangible, physical touchpoint that breaks through to members who haven't responded to traditional outreach — early engagement lift is the foundation for everything else",
+            carePyxHow: "Pyx creates a personal, high-touch first connection that breaks through to members who haven't responded to traditional outreach — early engagement lift is the foundation for everything else",
             action: "Two-wave push box launch (Wave 1: 4,141 on Apr 13 · Wave 2: 2,570 on Apr 20) followed by omni-channel outreach (telephone, SMS, email) and dedicated CSC support.",
+            careAction: "Two-wave launch outreach (April 13 and April 20) followed by omni-channel engagement (telephone, SMS, email, Pyx app) and dedicated Compassionate Support Center support.",
             metric: "1,779 members re-engaged · 25% of 7,000 eligible · 1,766 in an active care relationship",
             metricPending: false
         },
@@ -1424,6 +1558,7 @@ const D = {
             clientGoal: "Goal #3",
             statement: "Drive AWV completion and the preventive care cascade",
             pyxHow: "AWV is the gateway — once completed, it triggers screenings, referrals, and the full preventive care sequence. Pyx structures the scheduling support and milestone incentives to get members there",
+            carePyxHow: "AWV is the gateway — once completed, it triggers screenings, referrals, and the full preventive care sequence. Pyx structures the scheduling support and care milestones to get members there",
             action: "AWV scheduling assistance, provider connection support, structured follow-through for colorectal, breast cancer, dental, and Hemoglobin A1c screenings.",
             metric: "631 AWVs completed · 223 preventive screenings attested — preventive cascade in motion",
             metricPending: false
@@ -1432,7 +1567,9 @@ const D = {
             clientGoal: "Goal #4",
             statement: "Drive annual flu vaccine completion",
             pyxHow: "Flu vaccine is a standalone HEDIS and CAHPS/HOS quality measure — Pyx tracks attestation directly and incentivizes completion with Milestone Box 5",
+            carePyxHow: "Flu vaccine is a standalone HEDIS and CAHPS/HOS quality measure — Pyx tracks attestation directly and drives completion through the care sequence and app reminders",
             action: "Flu vaccine attestation workflow embedded in engagement sequence. Members receive Box 5 upon confirmation of annual flu vaccine receipt.",
+            careAction: "Flu vaccine attestation workflow embedded in the engagement sequence, with Pyx app reminders and CSC follow-up to confirm annual receipt.",
             metric: "Flu vaccine attestation tracking activates post opt-in",
             metricPending: true
         },
@@ -1518,10 +1655,17 @@ const D = {
             state: "done",
             wondering: "Can Pyx execute fast enough to hit our April launch timeline — and will a produce box actually cut through to these disengaged members?",
             answer: "Yes on both counts. Implementation completed on schedule and push boxes shipped in two waves: Wave 1 (4,141 members, April 13) and Wave 2 (2,570 members, April 20), reaching 6,711 of 7,000 eligible members. All outreach infrastructure — phone, SMS, email, and toll-free CSC line — is live.",
+            careWondering: "Can Pyx execute fast enough to hit our April launch timeline — and break through to members who haven't responded to traditional outreach?",
+            careAnswer: "Yes. Implementation completed on schedule, meeting Wellcare's mandate for a fast April launch. Pyx reached 6,711 of 7,000 eligible members across two launch waves and stood up omni-channel outreach — phone, SMS, email, and a toll-free Compassionate Support Center line — all live and driving opt-in and app onboarding.",
             stats: [
                 { label: "Push Boxes Shipped",     valKey: "pushBoxesShipped", fallback: "—",       ctx: "Wave 1 (4,141) + Wave 2 (2,570)", color: ""      },
                 { label: "Members Reached",         val: "6,711",               ctx: "95.9% of 7,000 eligible",          color: "green"  },
                 { label: "Shipping Waves",           val: "2 of 2",              ctx: "Both complete ✓",                  color: "teal"   },
+                { label: "Go-Live Status",           val: "On Schedule",         ctx: "April 13 per contract",            color: "blue"   }
+            ],
+            careStats: [
+                { label: "Members Reached",          val: "6,711",               ctx: "95.9% of 7,000 eligible",          color: "green"  },
+                { label: "Outreach Channels",        val: "4 Live",              ctx: "Phone · SMS · Email · CSC line",   color: "teal"   },
                 { label: "Go-Live Status",           val: "On Schedule",         ctx: "April 13 per contract",            color: "blue"   }
             ]
         },
@@ -1545,11 +1689,19 @@ const D = {
             state: "",
             wondering: "Are opted-in members completing AWVs and preventive screenings — and is the produce box incentive actually driving follow-through on care?",
             answer: "AWV and preventive care attestation tracking activates as engaged members progress through Milestone Boxes 3–5. The AWV is the highest-leverage activity in this program — a single completed visit triggers the full preventive care cascade (screenings, referrals, Hemoglobin A1c, flu vaccine) while simultaneously building the member's relationship with their plan.",
+            careWondering: "Are opted-in members completing AWVs and preventive screenings — and is the care sequence actually driving follow-through?",
+            careAnswer: "AWV and preventive care attestations climb as engaged members progress through the care sequence. The AWV is the highest-leverage activity in this program — a single completed visit triggers the full preventive care cascade (screenings, referrals, Hemoglobin A1c, flu vaccine) while simultaneously deepening the member's relationship with their plan and the Pyx app.",
             stats: [
                 { label: "AWV Attestations",          valKey: "awvAttestations",          fallback: "Pending", ctx: "Milestone Box 3",          color: "purple" },
                 { label: "Preventive Screenings",     valKey: "preventiveAttestations",   fallback: "Pending", ctx: "Milestone Box 4",          color: "orange" },
                 { label: "Flu Vaccine Attestations",  valKey: "fluVaccineAttestations",   fallback: "Pending", ctx: "Milestone Box 5",          color: "teal"   },
                 { label: "Box Pipeline",              valKey: "membersOptedIn",            fallback: "Building", ctx: "Grows with opt-in rate",  color: "slate"  }
+            ],
+            careStats: [
+                { label: "AWV Attestations",          valKey: "awvAttestations",          fallback: "Pending", ctx: "Care Access · AWV milestone",        color: "purple" },
+                { label: "Preventive Screenings",     valKey: "preventiveAttestations",   fallback: "Pending", ctx: "Care Access · preventive milestone", color: "orange" },
+                { label: "Flu Vaccine Attestations",  valKey: "fluVaccineAttestations",   fallback: "Pending", ctx: "Care Access · flu vaccine milestone", color: "teal"   },
+                { label: "Engagement Pipeline",       valKey: "membersOptedIn",            fallback: "Building", ctx: "Grows with opt-in & app use",       color: "slate"  }
             ]
         },
         {
@@ -1612,15 +1764,21 @@ function switchTab(name, btn) {
 ============================================= */
 
 function renderHeader() {
-    document.getElementById('client-period').textContent =
-        `${D.program.reportMonth}  ·  Program Month ${D.program.programMonth}  ·  Data as of ${D.program.dataAsOf}`;
-    document.getElementById('prog-month-pill').textContent = D.program.programMonth;
-    document.getElementById('tl-label').textContent =
-        `Client Value Journey  ·  Program Month ${D.program.programMonth}  ·  These phases run in parallel — outreach, milestone work, and barrier resolution happen simultaneously`;
+    const setText = (id, txt) => { const el = document.getElementById(id); if (el) el.textContent = txt; };
+    const periodText = `${D.program.reportMonth}  ·  Program Month ${D.program.programMonth}  ·  Data as of ${D.program.dataAsOf}`;
+    const tlLabelText = `Client Value Journey  ·  Program Month ${D.program.programMonth}  ·  These phases run in parallel — outreach, care milestones, and barrier resolution happen simultaneously`;
+    setText('client-period', periodText);
+    setText('client-period-ce', periodText);
+    setText('prog-month-pill', D.program.programMonth);
+    setText('prog-month-pill-ce', D.program.programMonth);
+    setText('tl-label', tlLabelText);
+    setText('tl-label-ce', tlLabelText);
 }
 
 
-function renderTimeline() {
+function renderTimeline(opts = {}) {
+    const trackId = opts.track || 'tl-track';
+    const care = !!opts.care;
     const TOTAL = 9; // 9-month program (Apr 13 – Dec 31, 2026)
 
     // Parse current month from "1 of 9"
@@ -1677,6 +1835,8 @@ function renderTimeline() {
         }
     ];
 
+    if (care) rows[0].label = 'Launch & Outreach';
+
     // Build tick HTML
     const tickHTML = ticks.map(([label, pct]) =>
         `<span class="gantt-tick" style="left:${pct}%">${label}</span>`
@@ -1693,7 +1853,7 @@ function renderTimeline() {
         </div>
     `).join('');
 
-    document.getElementById('tl-track').innerHTML = `
+    document.getElementById(trackId).innerHTML = `
         <div class="gantt-header-row">
             <div class="gantt-row-label"></div>
             <div class="gantt-chart-col">
@@ -1708,7 +1868,9 @@ function renderTimeline() {
 }
 
 
-function renderKPIs() {
+function renderKPIs(opts = {}) {
+    const gridId = opts.grid || 'kpi-grid';
+    const care = !!opts.care;
     const { metrics: M, program: P } = D;
 
     const cards = [
@@ -1771,7 +1933,13 @@ function renderKPIs() {
         }
     ];
 
-    document.getElementById('kpi-grid').innerHTML = cards.map(c => `
+    let shownCards = cards;
+    if (care) {
+        shownCards = cards.filter(c => c.label !== 'Push Boxes Shipped');
+        shownCards.forEach(c => { if (typeof c.ctx === 'string') c.ctx = c.ctx.replace(/Milestone Box \d+ trigger/, 'Care Access milestone'); });
+    }
+
+    document.getElementById(gridId).innerHTML = shownCards.map(c => `
         <div class="kpi ${c.color}">
             <div class="kpi-lbl">${c.label}</div>
             <div class="kpi-val ${c.val === null ? 'pending' : ''}">
@@ -1790,28 +1958,33 @@ function renderKPIs() {
 }
 
 
-function renderJourney() {
+function renderJourney(opts = {}) {
+    const suffix = opts.suffix || '';
+    const care = !!opts.care;
     D.journey.forEach((phase, i) => {
         const n = i + 1;
+        const wondering = care && phase.careWondering ? phase.careWondering : phase.wondering;
+        const answer = care && phase.careAnswer ? phase.careAnswer : phase.answer;
+        const stats = care && phase.careStats ? phase.careStats : phase.stats;
 
         // Populate callout box
-        const qEl = document.getElementById(`journey-q-${n}`);
-        if (qEl && phase.wondering) {
+        const qEl = document.getElementById(`journey-q-${n}${suffix}`);
+        if (qEl && wondering) {
             const isCurrent = phase.state === 'here' || phase.state === 'done';
             const labelText = phase.state === 'done'    ? `Phase ${n} · ${phase.name} · Complete` :
                               phase.state === 'here'    ? `Phase ${n} · ${phase.name} · Active Now` :
                                                           `Phase ${n} · ${phase.name} · Upcoming`;
             qEl.innerHTML = `
                 <div class="client-q-label">${labelText} — What the data tells us</div>
-                <div class="client-q-text">"${phase.wondering}"</div>
-                <div class="client-q-answer">${phase.answer}</div>
+                <div class="client-q-text">"${wondering}"</div>
+                <div class="client-q-answer">${answer}</div>
             `;
         }
 
         // Populate stat cards
-        const cardsEl = document.getElementById(`journey-cards-${n}`);
-        if (cardsEl && phase.stats) {
-            cardsEl.innerHTML = phase.stats.map(s => {
+        const cardsEl = document.getElementById(`journey-cards-${n}${suffix}`);
+        if (cardsEl && stats) {
+            cardsEl.innerHTML = stats.map(s => {
                 let displayVal;
                 if (s.valKey) {
                     const raw = D.metrics[s.valKey];
@@ -1846,8 +2019,14 @@ function renderJourney() {
 }
 
 
-function renderMilestones() {
-    document.getElementById('milestone-funnel').innerHTML = D.milestones.map(m => {
+function renderMilestones(opts = {}) {
+    const funnelId = opts.funnel || 'milestone-funnel';
+    const care = !!opts.care;
+    document.getElementById(funnelId).innerHTML = D.milestones.map(m => {
+        const label = care && m.careLabel ? m.careLabel : m.label;
+        const desc = care && m.careDesc ? m.careDesc : m.desc;
+        const trigger = care && m.careTrigger ? m.careTrigger : m.trigger;
+        const badge = care ? `C${m.box}` : `B${m.box}`;
         const fillPct = m.actual !== null ? Math.round(pct(m.actual, m.target) * 100) : 0;
         const fillClass = m.status === 'active' ? 'blue' : m.status === 'done' ? '' : 'gray';
         const badgeClass = m.status === 'active' ? 'badge-active' : m.status === 'done' ? 'badge-done' : 'badge-pending';
@@ -1867,11 +2046,11 @@ function renderMilestones() {
 
         return `
         <div class="ms-row ${m.status}">
-            <div class="ms-box-badge">B${m.box}</div>
+            <div class="ms-box-badge">${badge}</div>
             <div>
-                <div class="ms-info-label">${m.label}</div>
-                <div class="ms-info-desc">${m.desc}</div>
-                <div class="ms-trigger">↳ ${m.trigger}</div>
+                <div class="ms-info-label">${label}</div>
+                <div class="ms-info-desc">${desc}</div>
+                <div class="ms-trigger">↳ ${trigger}</div>
                 ${waveTags}
                 ${m.box === 2 && D.metrics.membersOptedIn && D.metrics.careBarrierMembers ? `
                 <div style="margin-top:8px;font-size:11px;color:#6b808f;line-height:1.6;">
@@ -1898,11 +2077,12 @@ function renderMilestones() {
 }
 
 
-function renderInsights() {
+function renderInsights(opts = {}) {
+    const gridId = opts.grid || 'insight-grid';
     const insights = [
         {
             cls: "prapare", icon: "🏠", name: "PRAPARE — SDOH Screening",
-            avgNum: "2.0", avgMax: "/ 11", avgFillPct: (2.0/11*100).toFixed(1), fillCls: "fill-green",
+            avgNum: "2.0", avgMax: "/ 11", avgLabel: "Avg # of Needs", avgFillPct: (2.0/11*100).toFixed(1), fillCls: "fill-green",
             calloutCls: "green",
             callout: "<em>90%</em> of members who completed PRAPARE identified at least one social need",
             rowsLabel: "Top SDOH needs identified (% of screened members)",
@@ -1941,7 +2121,7 @@ function renderInsights() {
         },
         {
             cls: "hos", icon: "🏥", name: "Medicare Well-Being / HOS",
-            avgNum: "2.0", avgMax: "/ 10", avgFillPct: (2.0/10*100).toFixed(1), fillCls: "fill-blue",
+            avgNum: "2.0", avgMax: "/ 10", avgLabel: "Avg # of Needs", avgFillPct: (2.0/10*100).toFixed(1), fillCls: "fill-blue",
             calloutCls: "blue",
             callout: "<em>1,416 assessments</em> completed — avg score 2.0 of 10; fall risk and physical-activity gaps are the most common issues",
             rowsLabel: "Top issues identified (% of HOS assessments)",
@@ -1955,7 +2135,7 @@ function renderInsights() {
         }
     ];
 
-    document.getElementById('insight-grid').innerHTML = insights.map(c => `
+    document.getElementById(gridId).innerHTML = insights.map(c => `
         <div class="insight-card ${c.cls}">
             <div class="insight-hdr">
                 <div class="insight-icon">${c.icon}</div>
@@ -1964,7 +2144,7 @@ function renderInsights() {
             <div class="insight-avg">
                 <div class="insight-avg-num">${c.avgNum}<span style="font-size:14px;color:#8a9baa;font-weight:400;"> ${c.avgMax}</span></div>
                 <div class="insight-avg-meta">
-                    <div class="insight-avg-label">Avg Score</div>
+                    <div class="insight-avg-label">${c.avgLabel || 'Avg Score'}</div>
                     <div class="insight-avg-track">
                         <div class="insight-avg-fill ${c.fillCls}" style="width:${c.avgFillPct}%"></div>
                     </div>
@@ -2001,8 +2181,8 @@ function renderInsights() {
 }
 
 
-function renderScreenings() {
-    document.getElementById('screening-grid').innerHTML = D.screenings.map(s => `
+function renderScreenings(opts = {}) {
+    document.getElementById(opts.grid || 'screening-grid').innerHTML = D.screenings.map(s => `
         <div class="scr-card">
             <div class="scr-icon">${s.icon}</div>
             <div class="scr-name">${s.name}</div>
@@ -2145,16 +2325,21 @@ function renderValue() {
 }
 
 
-function renderGoals() {
-    document.getElementById('goals-grid').innerHTML = D.goals.map(g => `
+function renderGoals(opts = {}) {
+    const gridId = opts.grid || 'goals-grid';
+    const care = !!opts.care;
+    document.getElementById(gridId).innerHTML = D.goals.map(g => {
+        const action = care && g.careAction ? g.careAction : g.action;
+        return `
         <div class="goal-card">
             <div class="goal-client">${g.clientGoal}</div>
             <div class="goal-statement">${g.statement}</div>
             <div class="goal-pyx">How Pyx Activates</div>
-            <div class="goal-action">${g.action}</div>
+            <div class="goal-action">${action}</div>
             <span class="goal-metric ${g.metricPending ? 'pending' : ''}">${g.metric}</span>
         </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 
@@ -2198,6 +2383,8 @@ function renderMeeting() {
 function renderFooter() {
     const meta = `SOW #13 · Project Plan ID: ${D.program.projectPlanId} · Program End: ${D.program.projectPlanEnd} · Kaylan Mills — kaylan.mills@pyxhealth.com`;
     document.getElementById('footer-meta').textContent = meta;
+    const ceFooter = document.getElementById('footer-meta-ce');
+    if (ceFooter) ceFooter.textContent = meta;
 }
 
 
@@ -2384,6 +2571,15 @@ window.addEventListener('DOMContentLoaded', () => {
     renderValue();
     renderGoals();
     renderFooter();
+
+    // Client View - Care & Engagement (food-free variant)
+    renderTimeline({ track: 'tl-track-ce', care: true });
+    renderKPIs({ grid: 'kpi-grid-ce', care: true });
+    renderJourney({ suffix: '-ce', care: true });
+    renderMilestones({ funnel: 'milestone-funnel-ce', care: true });
+    renderScreenings({ grid: 'screening-grid-ce' });
+    renderInsights({ grid: 'insight-grid-ce' });
+    renderGoals({ grid: 'goals-grid-ce', care: true });
 
     renderInternalHeader();
     renderRevenue();
